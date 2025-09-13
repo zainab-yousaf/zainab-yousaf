@@ -2,12 +2,11 @@
 
 export default function About() {
     return (
-        <section
-            id="about"
-            className="min-h-screen flex flex-col justify-center px-8 bg-transparent"
-        >
-            <h2 className="text-4xl font-bold text-blue-600 mb-8">About Me</h2>
+        <div className="h-screen flex items-center justify-center px-8">
             <div className="max-w-4xl space-y-6 text-lg leading-relaxed text-gray-900">
+                <h2 className="text-4xl font-bold text-blue-600 mb-8 text-center">
+                    About Me
+                </h2>
                 <p>
                     I’m <span className="font-semibold">Zainab Yousaf</span>, a{" "}
                     <span className="font-semibold">Software Engineer</span>{" "}
@@ -120,6 +119,6 @@ export default function About() {
                     mobile, web, and AI technologies.
                 </p>
             </div>
-        </section>
+        </div>
     );
 }

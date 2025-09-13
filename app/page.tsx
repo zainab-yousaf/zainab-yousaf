@@ -10,22 +10,22 @@ export default function Home() {
             <main className="ml-48 w-full px-8 bg-white">
                 <section
                     id="home"
-                    className="h-screen flex items-center justify-center bg-white"
+                    className="h-screen flex flex-col items-center justify-center text-center bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white"
                 >
-                    <h2 className="text-4xl font-bold text-gray-900">
-                        Hi, I'm Zainab Youasf
-                    </h2>
+                    <h1 className="text-5xl font-extrabold mb-4">
+                        Hi, I'm Zainab Yousaf
+                    </h1>
+                    <p className="text-xl text-gray-300 max-w-2xl">
+                        Full-Stack Software Engineer building scalable,
+                        AI-powered solutions with React and NestJS.
+                    </p>
                 </section>
 
                 <section
                     id="about"
-                    className="h-screen flex items-center justify-center bg-white"
+                    className="h-screen bg-white flex items-center justify-center"
                 >
-                    <div className="bg-white text-gray-900 font-sans flex">
-                        <div className="flex-1">
-                            <About />
-                        </div>
-                    </div>
+                    <About />
                 </section>
 
                 <section
