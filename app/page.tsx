@@ -1,3 +1,5 @@
+"use client";
+
 import SideNav from "../components/SideNav";
 import About from "../components/About";
 import Projects from "@/components/Project";
@@ -55,12 +57,30 @@ export default function Home() {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up animation-delay-400">
                             <a
                                 href="#about"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document
+                                        .getElementById("about")
+                                        ?.scrollIntoView({
+                                            behavior: "smooth",
+                                            block: "start",
+                                        });
+                                }}
                                 className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                             >
                                 Explore My Work
                             </a>
                             <a
                                 href="#contact"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document
+                                        .getElementById("contact")
+                                        ?.scrollIntoView({
+                                            behavior: "smooth",
+                                            block: "start",
+                                        });
+                                }}
                                 className="px-8 py-3 border-2 border-blue-400 text-blue-400 font-semibold rounded-full hover:bg-blue-400 hover:text-white transform hover:scale-105 transition-all duration-300"
                             >
                                 Get In Touch
@@ -69,8 +89,16 @@ export default function Home() {
                     </div>
 
                     {/* Scroll Indicator */}
-                    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+                    <div
+                        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+                        onClick={() =>
+                            document.getElementById("about")?.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start",
+                            })
+                        }
+                    >
+                        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center hover:border-blue-400 transition-colors duration-300">
                             <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
                         </div>
                     </div>

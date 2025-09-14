@@ -23,6 +23,7 @@ const icons: Record<string, any> = {
 
 export default function SideNav() {
     const [active, setActive] = useState("home");
+    const [scrollProgress, setScrollProgress] = useState(0);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -36,14 +37,42 @@ export default function SideNav() {
                 Math.abs(curr.offset) < Math.abs(prev.offset) ? curr : prev
             );
             setActive(current.id);
+
+            // Calculate scroll progress
+            const scrollTop = window.pageYOffset;
+            const docHeight =
+                document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            setScrollProgress(scrollPercent);
         };
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const handleNavClick = (
+        e: React.MouseEvent<HTMLAnchorElement>,
+        sectionId: string
+    ) => {
+        e.preventDefault();
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
+        }
+    };
+
     return (
         <nav className="fixed left-0 top-0 h-screen w-72 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-300 shadow-2xl flex flex-col items-center p-6 border-r border-gray-700">
+            {/* Scroll Progress Bar */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gray-700">
+                <div
+                    className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 ease-out"
+                    style={{ width: `${scrollProgress}%` }}
+                ></div>
+            </div>
             {/* Profile Section */}
             <div className="flex flex-col items-center mb-8">
                 {/* Profile Image with Enhanced Styling */}
@@ -101,6 +130,7 @@ export default function SideNav() {
                         <li key={sec}>
                             <a
                                 href={`#${sec}`}
+                                onClick={(e) => handleNavClick(e, sec)}
                                 className={`group flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 relative ${
                                     isActive
                                         ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25"
@@ -154,6 +184,14 @@ export default function SideNav() {
                         Available for opportunities
                     </p>
                 </div>
+            </div>
+
+            {/* Vertical Scroll Progress Indicator */}
+            <div className="absolute right-2 top-20 bottom-20 w-1 bg-gray-700 rounded-full">
+                <div
+                    className="w-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full transition-all duration-300 ease-out"
+                    style={{ height: `${scrollProgress}%` }}
+                ></div>
             </div>
         </nav>
     );

@@ -155,7 +155,7 @@ This is a personal portfolio project, but suggestions and improvements are welco
 
 -   **Email**: zainab.yousaf161@gmail.com
 -   **LinkedIn**: [zainabyousaf](https://www.linkedin.com/in/zainabyousaf/)
--   **Portfolio**: [Live Demo](https://your-portfolio-url.vercel.app)
+-   **Portfolio**: [Live Demo](https://zainab-yousaf.vercel.app)
 
 ## 📝 License
 
