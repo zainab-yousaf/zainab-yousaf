@@ -31,6 +31,42 @@ html {
     box-sizing: border-box;
 }
 
+/* Force consistent font sizes */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.text-6xl {
+    font-size: 3.75rem !important;
+    line-height: 1 !important;
+}
+
+.text-7xl {
+    font-size: 4.5rem !important;
+    line-height: 1 !important;
+}
+
+.text-xl {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+}
+
+.text-2xl {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+}
+
+.text-lg {
+    font-size: 1.125rem !important;
+    line-height: 1.75rem !important;
+}
+
 section {
     position: relative;
     z-index: 1;
