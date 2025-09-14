@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 :root {
     --background: #ffffff;
@@ -65,6 +67,32 @@ h6 {
 .text-lg {
     font-size: 1.125rem !important;
     line-height: 1.75rem !important;
+}
+
+/* Additional font size fixes */
+.font-extrabold {
+    font-weight: 800 !important;
+}
+
+.font-semibold {
+    font-weight: 600 !important;
+}
+
+.font-medium {
+    font-weight: 500 !important;
+}
+
+/* Ensure responsive text sizes work */
+@media (min-width: 768px) {
+    .md\:text-7xl {
+        font-size: 4.5rem !important;
+        line-height: 1 !important;
+    }
+
+    .md\:text-2xl {
+        font-size: 1.5rem !important;
+        line-height: 2rem !important;
+    }
 }
 
 section {
