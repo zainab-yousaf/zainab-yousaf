@@ -11,7 +11,8 @@ export default function Home() {
             <SideNav />
 
             {/* Main Content */}
-            <main className="ml-72 w-full px-8 bg-white">
+            <main className="ml-72 w-full">
+                {/* Home Section - Full Width Background */}
                 <section
                     id="home"
                     className="h-screen flex flex-col items-center justify-center text-center bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white relative overflow-hidden"
@@ -75,31 +76,20 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section
-                    id="about"
-                    className="min-h-screen justify-center py-16 px-6 bg-white"
-                >
+                {/* Other Sections - Full Width */}
+                <section id="about" className="min-h-screen bg-white">
                     <About />
                 </section>
 
-                <section
-                    id="projects"
-                    className="min-h-screen justify-center py-16 px-6 bg-white"
-                >
+                <section id="projects" className="min-h-screen bg-white">
                     <Projects />
                 </section>
 
-                <section
-                    id="skills"
-                    className="min-h-screen justify-center py-16 px-6 bg-white"
-                >
+                <section id="skills" className="min-h-screen bg-white">
                     <Skills />
                 </section>
 
-                <section
-                    id="contact"
-                    className="min-h-screen justify-center py-16 px-6 bg-white"
-                >
+                <section id="contact" className="min-h-screen bg-white">
                     <ContactInfo />
                 </section>
             </main>

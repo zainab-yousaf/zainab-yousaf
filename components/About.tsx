@@ -2,7 +2,7 @@
 
 export default function About() {
     return (
-        <div className="min-h-screen flex items-start justify-center px-8 pt-32 bg-gradient-to-br from-gray-50 to-white">
+        <div className="min-h-screen flex items-start justify-center px-8 py-16 bg-gradient-to-br from-gray-50 to-white">
             <div className="max-w-6xl w-full">
                 {/* Header Section */}
                 <div className="text-center mb-16">

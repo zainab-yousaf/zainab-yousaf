@@ -67,7 +67,7 @@ export default function Skills() {
     return (
         <section
             id="skills"
-            className="min-h-screen py-20 bg-gradient-to-br from-gray-50 to-white"
+            className="min-h-screen py-20 px-8 bg-gradient-to-br from-gray-50 to-white"
         >
             <div className="max-w-7xl mx-auto px-6">
                 {/* Header Section */}
