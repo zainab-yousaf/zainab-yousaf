@@ -43,66 +43,118 @@ export default function SideNav() {
     }, []);
 
     return (
-        <nav className="fixed left-0 top-0 h-screen w-60 bg-gray-900 text-gray-300 shadow-xl flex flex-col items-center p-6">
-            {/* Profile Image */}
-            <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-blue-400 shadow-lg mt-4">
-                <Image
-                    src={imageProfile}
-                    alt="Zainab Yousaf"
-                    width={140}
-                    height={140}
-                    className="object-cover"
-                />
+        <nav className="fixed left-0 top-0 h-screen w-72 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-300 shadow-2xl flex flex-col items-center p-6 border-r border-gray-700">
+            {/* Profile Section */}
+            <div className="flex flex-col items-center mb-8">
+                {/* Profile Image with Enhanced Styling */}
+                <div className="relative group">
+                    <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-transparent bg-gradient-to-r from-blue-500 to-purple-500 p-1 shadow-2xl group-hover:shadow-blue-500/25 transition-all duration-300">
+                        <div className="w-full h-full rounded-full overflow-hidden">
+                            <Image
+                                src={imageProfile}
+                                alt="Zainab Yousaf"
+                                width={150}
+                                height={150}
+                                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                            />
+                        </div>
+                    </div>
+                    {/* Online Status Indicator */}
+                    <div className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 rounded-full border-2 border-gray-900 animate-pulse"></div>
+                </div>
+
+                {/* Name with Gradient */}
+                <h1 className="font-bold text-2xl bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent text-center mt-6 mb-2">
+                    Zainab Yousaf
+                </h1>
+                <p className="text-sm text-gray-400 text-center mb-4">
+                    Full-Stack Software Engineer
+                </p>
             </div>
 
-            {/* Name */}
-            <h1 className="font-bold text-2xl text-white text-center mt-4">
-                Zainab Yousaf
-            </h1>
-
-            {/* Social Links just below the name */}
-            <div className="flex gap-6 mt-3">
-                {/* LinkedIn */}
+            {/* Social Links with Enhanced Styling */}
+            <div className="flex gap-4 mb-8">
                 <a
                     href="https://www.linkedin.com/in/zainabyousaf/"
                     target="_blank"
                     rel="noopener noreferrer"
                     title="LinkedIn"
-                    className="text-gray-400 hover:text-blue-400 transition transform hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]"
+                    className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center text-white hover:from-blue-500 hover:to-blue-600 transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25"
                 >
-                    <Linkedin size={28} />
+                    <Linkedin size={20} />
                 </a>
-                {/* Email */}
                 <a
                     href="mailto:zainab.yousaf161@gmail.com"
                     title="Email"
-                    className="text-gray-400 hover:text-blue-400 transition transform hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]"
+                    className="w-12 h-12 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center text-white hover:from-purple-500 hover:to-purple-600 transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-purple-500/25"
                 >
-                    <Mail size={28} />
+                    <Mail size={20} />
                 </a>
             </div>
 
-            {/* Navigation Links */}
-            <ul className="space-y-6 mt-10 w-full text-left text-lg">
+            {/* Navigation Links with Enhanced Styling */}
+            <ul className="space-y-3 w-full">
                 {sections.map((sec) => {
                     const Icon = icons[sec];
+                    const isActive = active === sec;
                     return (
                         <li key={sec}>
                             <a
                                 href={`#${sec}`}
-                                className={`flex items-center gap-3 transition-colors ${
-                                    active === sec
-                                        ? "text-blue-400 font-semibold"
-                                        : "hover:text-white"
+                                className={`group flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 relative ${
+                                    isActive
+                                        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25"
+                                        : "hover:bg-gray-700/50 hover:text-white"
                                 }`}
                             >
-                                <Icon size={22} />
-                                {sec.charAt(0).toUpperCase() + sec.slice(1)}
+                                {/* Active Indicator */}
+                                {isActive && (
+                                    <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-1 h-8 bg-white rounded-r-full"></div>
+                                )}
+
+                                {/* Icon */}
+                                <div
+                                    className={`transition-all duration-300 ${
+                                        isActive
+                                            ? "text-white"
+                                            : "text-gray-400 group-hover:text-blue-400"
+                                    }`}
+                                >
+                                    <Icon size={20} />
+                                </div>
+
+                                {/* Text */}
+                                <span
+                                    className={`font-medium transition-all duration-300 ${
+                                        isActive
+                                            ? "text-white"
+                                            : "text-gray-300 group-hover:text-white"
+                                    }`}
+                                >
+                                    {sec.charAt(0).toUpperCase() + sec.slice(1)}
+                                </span>
+
+                                {/* Hover Effect */}
+                                {!isActive && (
+                                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                )}
                             </a>
                         </li>
                     );
                 })}
             </ul>
+
+            {/* Bottom Section */}
+            <div className="mt-auto mb-6">
+                <div className="text-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span className="text-white text-lg">🚀</span>
+                    </div>
+                    <p className="text-xs text-gray-500">
+                        Available for opportunities
+                    </p>
+                </div>
+            </div>
         </nav>
     );
 }
