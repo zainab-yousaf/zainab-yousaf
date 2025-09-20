@@ -2,29 +2,29 @@
 
 export default function About() {
     return (
-        <div className="min-h-screen flex items-start justify-center px-8 py-16 bg-gradient-to-br from-gray-50 to-white">
+        <div className="min-h-screen flex items-start justify-center px-4 py-8 bg-gradient-to-br from-gray-50 to-white">
             <div className="max-w-6xl w-full">
                 {/* Header Section */}
-                <div className="text-center mb-16">
-                    <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                <div className="text-center mb-8">
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
                         About Me
                     </h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
                 </div>
 
                 {/* Main Content Grid */}
-                <div className="grid lg:grid-cols-2 gap-12 items-start">
+                <div className="grid lg:grid-cols-2 gap-6 items-start">
                     {/* Left Column - Introduction Card */}
-                    <div className="space-y-8">
-                        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300">
-                            <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-4">
-                                    <span className="text-white font-bold text-xl">
+                    <div className="space-y-4">
+                        <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                            <div className="flex items-center mb-4">
+                                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mr-3">
+                                    <span className="text-white font-bold text-lg">
                                         ZY
                                     </span>
                                 </div>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-gray-900">
+                                    <h3 className="text-xl font-bold text-gray-900">
                                         Zainab Yousaf
                                     </h3>
                                     <p className="text-blue-600 font-medium">
@@ -54,14 +54,14 @@ export default function About() {
                         </div>
 
                         {/* Experience Card */}
-                        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300">
-                            <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mr-4">
-                                    <span className="text-white text-xl">
+                        <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                            <div className="flex items-center mb-4">
+                                <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mr-3">
+                                    <span className="text-white text-lg">
                                         💼
                                     </span>
                                 </div>
-                                <h3 className="text-2xl font-bold text-gray-900">
+                                <h3 className="text-xl font-bold text-gray-900">
                                     Professional Experience
                                 </h3>
                             </div>
@@ -96,16 +96,16 @@ export default function About() {
                     </div>
 
                     {/* Right Column - Skills & Values */}
-                    <div className="space-y-8">
+                    <div className="space-y-4">
                         {/* Skills Card */}
-                        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300">
-                            <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4">
-                                    <span className="text-white text-xl">
+                        <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                            <div className="flex items-center mb-4">
+                                <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-3">
+                                    <span className="text-white text-lg">
                                         ⚡
                                     </span>
                                 </div>
-                                <h3 className="text-2xl font-bold text-gray-900">
+                                <h3 className="text-xl font-bold text-gray-900">
                                     Technical Expertise
                                 </h3>
                             </div>
@@ -147,14 +147,14 @@ export default function About() {
                         </div>
 
                         {/* Values Card */}
-                        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hover:shadow-2xl transition-all duration-300">
-                            <div className="flex items-center mb-6">
-                                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mr-4">
-                                    <span className="text-white text-xl">
+                        <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                            <div className="flex items-center mb-4">
+                                <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mr-3">
+                                    <span className="text-white text-lg">
                                         🎯
                                     </span>
                                 </div>
-                                <h3 className="text-2xl font-bold text-gray-900">
+                                <h3 className="text-xl font-bold text-gray-900">
                                     Core Values
                                 </h3>
                             </div>
@@ -191,9 +191,9 @@ export default function About() {
                 </div>
 
                 {/* Bottom Section - Full Width */}
-                <div className="mt-16">
-                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-gray-100">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+                <div className="mt-8">
+                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-gray-100">
+                        <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
                             My Mission
                         </h3>
                         <p className="text-gray-700 text-center leading-relaxed max-w-4xl mx-auto">

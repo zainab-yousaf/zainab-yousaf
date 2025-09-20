@@ -28,20 +28,20 @@ export default function Home() {
 
                     {/* Main Content */}
                     <div className="relative z-10">
-                        <div className="mb-6">
-                            <span className="text-lg text-blue-400 font-medium tracking-wider uppercase animate-fade-in">
+                        <div className="mb-4">
+                            <span className="text-base text-blue-400 font-medium tracking-wider uppercase animate-fade-in">
                                 Welcome to my portfolio
                             </span>
                         </div>
 
-                        <h1 className="text-6xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent animate-slide-up">
+                        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent animate-slide-up">
                             Hi, I'm{" "}
                             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent animate-gradient">
                                 Zainab Yousaf
                             </span>
                         </h1>
 
-                        <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mb-8 animate-slide-up animation-delay-200">
+                        <p className="text-lg md:text-xl text-gray-300 max-w-3xl mb-6 animate-slide-up animation-delay-200">
                             Full-Stack Software Engineer building{" "}
                             <span className="text-blue-400 font-semibold">
                                 scalable
@@ -54,7 +54,7 @@ export default function Home() {
                         </p>
 
                         {/* Action Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up animation-delay-400">
+                        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center animate-slide-up animation-delay-400">
                             <a
                                 href="#about"
                                 onClick={(e) => {
@@ -66,7 +66,7 @@ export default function Home() {
                                             block: "start",
                                         });
                                 }}
-                                className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                             >
                                 Explore My Work
                             </a>
@@ -81,7 +81,7 @@ export default function Home() {
                                             block: "start",
                                         });
                                 }}
-                                className="px-8 py-3 border-2 border-blue-400 text-blue-400 font-semibold rounded-full hover:bg-blue-400 hover:text-white transform hover:scale-105 transition-all duration-300"
+                                className="px-6 py-2 border-2 border-blue-400 text-blue-400 font-semibold rounded-full hover:bg-blue-400 hover:text-white transform hover:scale-105 transition-all duration-300"
                             >
                                 Get In Touch
                             </a>

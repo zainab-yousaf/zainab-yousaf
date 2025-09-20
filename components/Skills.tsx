@@ -67,33 +67,33 @@ export default function Skills() {
     return (
         <section
             id="skills"
-            className="min-h-screen py-20 px-8 bg-gradient-to-br from-gray-50 to-white"
+            className="min-h-screen py-12 px-4 bg-gradient-to-br from-gray-50 to-white"
         >
             <div className="max-w-7xl mx-auto px-6">
                 {/* Header Section */}
-                <div className="text-center mb-16">
-                    <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                <div className="text-center mb-8">
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
                         Skills & Technologies
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-6"></div>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"></div>
+                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                         A comprehensive overview of my technical expertise
                         across multiple domains
                     </p>
                 </div>
 
                 {/* Skills Grid */}
-                <div className="grid lg:grid-cols-2 gap-8">
+                <div className="grid lg:grid-cols-2 gap-6">
                     {Object.entries(skills).map(
                         ([category, items], categoryIndex) => (
                             <div
                                 key={category}
-                                className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1"
+                                className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1"
                             >
                                 {/* Category Header */}
-                                <div className="flex items-center mb-6">
+                                <div className="flex items-center mb-4">
                                     <div
-                                        className={`w-12 h-12 rounded-full flex items-center justify-center mr-4 ${
+                                        className={`w-10 h-10 rounded-full flex items-center justify-center mr-3 ${
                                             categoryIndex % 4 === 0
                                                 ? "bg-gradient-to-r from-blue-500 to-purple-500"
                                                 : categoryIndex % 4 === 1
@@ -103,7 +103,7 @@ export default function Skills() {
                                                 : "bg-gradient-to-r from-orange-500 to-red-500"
                                         }`}
                                     >
-                                        <span className="text-white text-xl">
+                                        <span className="text-white text-lg">
                                             {categoryIndex % 4 === 0
                                                 ? "💻"
                                                 : categoryIndex % 4 === 1
@@ -114,7 +114,7 @@ export default function Skills() {
                                         </span>
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold text-gray-900">
+                                        <h3 className="text-xl font-bold text-gray-900">
                                             {category}
                                         </h3>
                                         <p className="text-gray-500 text-sm">
@@ -186,11 +186,11 @@ export default function Skills() {
                 </div>
 
                 {/* Bottom Stats Section */}
-                <div className="mt-16">
-                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-3xl p-12 border border-gray-100">
-                        <div className="grid md:grid-cols-4 gap-8 text-center">
+                <div className="mt-8">
+                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 border border-gray-100">
+                        <div className="grid md:grid-cols-4 gap-6 text-center">
                             <div className="group">
-                                <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                                <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                                     {Object.values(skills).flat().length}+
                                 </div>
                                 <p className="text-gray-600 font-medium">

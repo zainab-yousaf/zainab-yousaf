@@ -72,33 +72,33 @@ export default function Projects() {
     return (
         <section
             id="projects"
-            className="min-h-screen py-16 px-8 bg-gradient-to-br from-gray-50 to-white"
+            className="min-h-screen py-12 px-4 bg-gradient-to-br from-gray-50 to-white"
         >
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
-                <div className="text-center mb-16">
-                    <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                <div className="text-center mb-8">
+                    <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
                         Featured Projects
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-6"></div>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"></div>
+                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                         A showcase of my recent work spanning web applications,
                         mobile development, and AI-powered solutions
                     </p>
                 </div>
 
                 {/* Projects Grid */}
-                <div className="grid lg:grid-cols-2 gap-8">
+                <div className="grid lg:grid-cols-2 gap-6">
                     {projects.map((project, idx) => (
                         <div
                             key={idx}
-                            className="group bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                            className="group bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2"
                         >
                             {/* Project Header */}
-                            <div className="relative p-8 pb-6">
+                            <div className="relative p-6 pb-4">
                                 <div className="flex items-start justify-between mb-4">
                                     <div className="flex-1">
-                                        <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                                             {project.title}
                                         </h3>
                                         <div className="flex items-center text-sm text-gray-500 mb-3">
@@ -129,7 +129,7 @@ export default function Projects() {
                             </div>
 
                             {/* Skills Section */}
-                            <div className="px-8 pb-8">
+                            <div className="px-6 pb-6">
                                 <h4 className="text-sm font-semibold text-gray-800 mb-3 uppercase tracking-wide">
                                     Technologies Used
                                 </h4>
@@ -146,7 +146,7 @@ export default function Projects() {
                             </div>
 
                             {/* Project Footer */}
-                            <div className="px-8 pb-8">
+                            <div className="px-6 pb-6">
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center space-x-4">
                                         <div className="flex items-center text-sm text-gray-500">
@@ -171,26 +171,26 @@ export default function Projects() {
                 </div>
 
                 {/* Bottom CTA Section */}
-                <div className="mt-16 text-center">
-                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-3xl p-12 border border-gray-100">
-                        <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                <div className="mt-8 text-center">
+                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 border border-gray-100">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">
                             Interested in Working Together?
                         </h3>
-                        <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                        <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
                             I'm always excited to take on new challenges and
                             create innovative solutions. Let's discuss your next
                             project!
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div className="flex flex-col sm:flex-row gap-3 justify-center">
                             <a
                                 href="#contact"
-                                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                             >
                                 Start a Project
                             </a>
                             <a
                                 href="#about"
-                                className="px-8 py-4 border-2 border-blue-400 text-blue-400 font-semibold rounded-full hover:bg-blue-400 hover:text-white transform hover:scale-105 transition-all duration-300"
+                                className="px-6 py-3 border-2 border-blue-400 text-blue-400 font-semibold rounded-full hover:bg-blue-400 hover:text-white transform hover:scale-105 transition-all duration-300"
                             >
                                 Learn More About Me
                             </a>
