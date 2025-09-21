@@ -1,6 +1,5 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
     content: [
         "./pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -21,6 +20,7 @@ const config: Config = {
                 "3xl": ["1.875rem", { lineHeight: "2.25rem" }],
                 "4xl": ["2.25rem", { lineHeight: "2.5rem" }],
                 "5xl": ["3rem", { lineHeight: "1" }],
+                "5.5xl": ["3.375rem", { lineHeight: "1" }],
                 "6xl": ["3.75rem", { lineHeight: "1" }],
                 "7xl": ["4.5rem", { lineHeight: "1" }],
             },
@@ -47,5 +47,3 @@ const config: Config = {
     },
     plugins: [],
 };
-
-export default config;

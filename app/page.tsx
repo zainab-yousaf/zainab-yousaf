@@ -34,7 +34,7 @@ export default function Home() {
                             </span>
                         </div>
 
-                        <h1 className="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent animate-slide-up">
+                        <h1 className="text-5.5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent animate-slide-up">
                             Hi, I'm{" "}
                             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent animate-gradient">
                                 Zainab Yousaf
