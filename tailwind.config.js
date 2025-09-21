@@ -20,7 +20,7 @@ module.exports = {
                 "3xl": ["1.875rem", { lineHeight: "2.25rem" }],
                 "4xl": ["2.25rem", { lineHeight: "2.5rem" }],
                 "5xl": ["3rem", { lineHeight: "1" }],
-                "5.5xl": ["3.375rem", { lineHeight: "1" }],
+                "5.5xl": ["3.5rem", { lineHeight: "1" }],
                 "6xl": ["3.75rem", { lineHeight: "1" }],
                 "7xl": ["4.5rem", { lineHeight: "1" }],
             },
