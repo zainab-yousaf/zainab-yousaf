@@ -13,7 +13,7 @@ export default function Home() {
             <SideNav />
 
             {/* Main Content */}
-            <main className="ml-72 w-full">
+            <main className="ml-64 w-full">
                 {/* Home Section - Full Width Background */}
                 <section
                     id="home"
@@ -34,7 +34,7 @@ export default function Home() {
                             </span>
                         </div>
 
-                        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent animate-slide-up">
+                        <h1 className="text-6xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent animate-slide-up">
                             Hi, I'm{" "}
                             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent animate-gradient">
                                 Zainab Yousaf
