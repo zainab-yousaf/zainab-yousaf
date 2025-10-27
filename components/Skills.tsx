@@ -131,7 +131,7 @@ export default function Skills() {
                                             className="group relative"
                                         >
                                             <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-4 text-center hover:from-blue-50 hover:to-purple-50 transition-all duration-300 border border-gray-200 hover:border-blue-300">
-                                                <span className="text-gray-700 font-medium text-sm group-hover:text-blue-600 transition-colors duration-300">
+                                                <span className="text-gray-700 font-medium text-xs group-hover:text-blue-600 transition-colors duration-300">
                                                     {skill}
                                                 </span>
                                             </div>

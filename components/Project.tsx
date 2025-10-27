@@ -113,8 +113,8 @@ export default function Projects() {
                                         <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                                             {project.title}
                                         </h3>
-                                        <div className="flex items-center text-sm text-gray-500 mb-3">
-                                            <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-medium mr-3">
+                                        <div className="flex items-center text-xs text-gray-500 mb-3">
+                                            <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium mr-3">
                                                 {project.org}
                                             </span>
                                             <span className="text-gray-400">
@@ -169,7 +169,7 @@ export default function Projects() {
                                     {project.skills.map((skill, i) => (
                                         <span
                                             key={i}
-                                            className="px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-blue-50 to-purple-50 text-gray-700 border border-gray-200 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all duration-300"
+                                            className="px-2 py-1 text-xs font-medium rounded-full bg-gradient-to-r from-blue-50 to-purple-50 text-gray-700 border border-gray-200 hover:from-blue-100 hover:to-purple-100 hover:border-blue-300 transition-all duration-300"
                                         >
                                             {skill}
                                         </span>
@@ -181,11 +181,11 @@ export default function Projects() {
                             <div className="px-6 pb-6">
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center space-x-4">
-                                        <div className="flex items-center text-sm text-gray-500">
+                                        <div className="flex items-center text-xs text-gray-500">
                                             <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
                                             Completed
                                         </div>
-                                        <div className="flex items-center text-sm text-gray-500">
+                                        <div className="flex items-center text-xs text-gray-500">
                                             <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                                             Production Ready
                                         </div>

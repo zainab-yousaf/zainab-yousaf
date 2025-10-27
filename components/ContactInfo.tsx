@@ -180,10 +180,10 @@ export default function Contact() {
                                         <Mail className="w-6 h-6 text-white" />
                                     </div>
                                     <div>
-                                        <p className="font-semibold text-gray-900">
+                                        <p className="text-sm font-semibold text-gray-900">
                                             Email
                                         </p>
-                                        <p className="text-gray-600">
+                                        <p className="text-xs text-gray-600">
                                             zainab.yousaf161@gmail.com
                                         </p>
                                     </div>
@@ -194,10 +194,10 @@ export default function Contact() {
                                         <MapPin className="w-6 h-6 text-white" />
                                     </div>
                                     <div>
-                                        <p className="font-semibold text-gray-900">
+                                        <p className="text-sm font-semibold text-gray-900">
                                             Location
                                         </p>
-                                        <p className="text-gray-600">
+                                        <p className="text-xs text-gray-600">
                                             Lahore, Pakistan
                                         </p>
                                     </div>
@@ -208,10 +208,10 @@ export default function Contact() {
                                         <Phone className="w-6 h-6 text-white" />
                                     </div>
                                     <div>
-                                        <p className="font-semibold text-gray-900">
+                                        <p className="text-sm font-semibold text-gray-900">
                                             Availability
                                         </p>
-                                        <p className="text-gray-600">
+                                        <p className="text-xs text-gray-600">
                                             Open for opportunities
                                         </p>
                                     </div>
@@ -233,14 +233,14 @@ export default function Contact() {
                                     className="flex-1 p-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl text-center hover:from-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-300"
                                 >
                                     <div className="text-2xl mb-2">💼</div>
-                                    <p className="font-semibold">LinkedIn</p>
+                                    <p className="text-sm font-semibold">LinkedIn</p>
                                 </a>
                                 <a
                                     href="mailto:zainab.yousaf161@gmail.com"
                                     className="flex-1 p-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-2xl text-center hover:from-red-600 hover:to-red-700 transform hover:scale-105 transition-all duration-300"
                                 >
                                     <div className="text-2xl mb-2">📧</div>
-                                    <p className="font-semibold">Email</p>
+                                    <p className="text-sm font-semibold">Email</p>
                                 </a>
                             </div>
                         </div>

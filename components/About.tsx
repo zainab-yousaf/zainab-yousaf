@@ -68,25 +68,25 @@ export default function About() {
 
                             <div className="space-y-4">
                                 <div className="border-l-4 border-blue-500 pl-4">
-                                    <h4 className="font-bold text-gray-900">
+                                        <h4 className="text-sm font-bold text-gray-900">
                                         Automato AI
                                     </h4>
-                                    <p className="text-blue-600 font-medium">
+                                    <p className="text-blue-600 text-xs font-medium">
                                         Full-Stack Developer
                                     </p>
-                                    <p className="text-gray-600 text-sm">
+                                    <p className="text-gray-600 text-xs">
                                         AI-integrated solutions and e-commerce
                                         platforms
                                     </p>
                                 </div>
                                 <div className="border-l-4 border-purple-500 pl-4">
-                                    <h4 className="font-bold text-gray-900">
+                                    <h4 className="text-sm font-bold text-gray-900">
                                         Mobile Development
                                     </h4>
-                                    <p className="text-purple-600 font-medium">
+                                    <p className="text-purple-600 text-xs font-medium">
                                         iOS/macOS Apps
                                     </p>
-                                    <p className="text-gray-600 text-sm">
+                                    <p className="text-gray-600 text-xs">
                                         BGZoom, PDF Converter with advanced
                                         features
                                     </p>
@@ -112,33 +112,33 @@ export default function About() {
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-3">
-                                    <h4 className="font-semibold text-gray-800">
+                                    <h4 className="text-xs font-semibold text-gray-800">
                                         Frontend
                                     </h4>
                                     <div className="flex flex-wrap gap-2">
-                                        <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                                        <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
                                             React
                                         </span>
-                                        <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                                        <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
                                             TypeScript
                                         </span>
-                                        <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                                        <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
                                             SwiftUI
                                         </span>
                                     </div>
                                 </div>
                                 <div className="space-y-3">
-                                    <h4 className="font-semibold text-gray-800">
+                                    <h4 className="text-xs font-semibold text-gray-800">
                                         Backend
                                     </h4>
                                     <div className="flex flex-wrap gap-2">
-                                        <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+                                        <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">
                                             NestJS
                                         </span>
-                                        <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+                                        <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">
                                             PostgreSQL
                                         </span>
-                                        <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+                                        <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">
                                             MongoDB
                                         </span>
                                     </div>
