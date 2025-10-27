@@ -207,7 +207,7 @@ export default function Skills() {
                             </div>
                             <div className="group">
                                 <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
-                                    5+
+                                    1+
                                 </div>
                                 <p className="text-gray-600 font-medium">
                                     Years Experience
