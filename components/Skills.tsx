@@ -72,11 +72,11 @@ export default function Skills() {
             <div className="max-w-7xl mx-auto px-6">
                 {/* Header Section */}
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                    <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
                         Skills & Technologies
                     </h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"></div>
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-base text-gray-600 max-w-3xl mx-auto">
                         A comprehensive overview of my technical expertise
                         across multiple domains
                     </p>
@@ -114,7 +114,7 @@ export default function Skills() {
                                         </span>
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-bold text-gray-900">
+                                        <h3 className="text-lg font-bold text-gray-900">
                                             {category}
                                         </h3>
                                         <p className="text-gray-500 text-sm">

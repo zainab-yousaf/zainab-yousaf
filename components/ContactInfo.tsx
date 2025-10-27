@@ -55,11 +55,11 @@ export default function Contact() {
             <div className="max-w-7xl mx-auto px-6">
                 {/* Header Section */}
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                    <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
                         Get In Touch
                     </h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"></div>
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-base text-gray-600 max-w-3xl mx-auto">
                         I'm always open to discussing new projects,
                         opportunities, or collaborations. Let's create something
                         amazing together!
@@ -69,7 +69,7 @@ export default function Contact() {
                 <div className="grid lg:grid-cols-2 gap-6">
                     {/* Contact Form */}
                     <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
-                        <h3 className="text-xl font-bold text-gray-900 mb-4">
+                        <h3 className="text-lg font-bold text-gray-900 mb-4">
                             Send me a message
                         </h3>
 
@@ -167,7 +167,7 @@ export default function Contact() {
                     <div className="space-y-4">
                         {/* Contact Information */}
                         <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">
+                            <h3 className="text-lg font-bold text-gray-900 mb-4">
                                 Contact Information
                             </h3>
 
@@ -221,7 +221,7 @@ export default function Contact() {
 
                         {/* Social Links */}
                         <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
-                            <h3 className="text-xl font-bold text-gray-900 mb-4">
+                            <h3 className="text-lg font-bold text-gray-900 mb-4">
                                 Connect With Me
                             </h3>
 

@@ -6,7 +6,7 @@ export default function About() {
             <div className="max-w-6xl w-full">
                 {/* Header Section */}
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                    <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
                         About Me
                     </h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
@@ -24,7 +24,7 @@ export default function About() {
                                     </span>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold text-gray-900">
+                                    <h3 className="text-lg font-bold text-gray-900">
                                         Zainab Yousaf
                                     </h3>
                                     <p className="text-blue-600 font-medium">
@@ -33,7 +33,7 @@ export default function About() {
                                 </div>
                             </div>
 
-                            <p className="text-gray-700 leading-relaxed">
+                            <p className="text-sm text-gray-700 leading-relaxed">
                                 I'm a{" "}
                                 <span className="font-semibold text-blue-600">
                                     Full-Stack Software Engineer
@@ -61,7 +61,7 @@ export default function About() {
                                         💼
                                     </span>
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900">
+                                <h3 className="text-lg font-bold text-gray-900">
                                     Professional Experience
                                 </h3>
                             </div>
@@ -105,7 +105,7 @@ export default function About() {
                                         ⚡
                                     </span>
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900">
+                                <h3 className="text-lg font-bold text-gray-900">
                                     Technical Expertise
                                 </h3>
                             </div>
@@ -154,7 +154,7 @@ export default function About() {
                                         🎯
                                     </span>
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900">
+                                <h3 className="text-lg font-bold text-gray-900">
                                     Core Values
                                 </h3>
                             </div>
@@ -162,25 +162,25 @@ export default function About() {
                             <div className="space-y-4">
                                 <div className="flex items-start">
                                     <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3"></div>
-                                    <p className="text-gray-700">
+                                    <p className="text-sm text-gray-700">
                                         Clean code and maintainable architecture
                                     </p>
                                 </div>
                                 <div className="flex items-start">
                                     <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3"></div>
-                                    <p className="text-gray-700">
+                                    <p className="text-sm text-gray-700">
                                         Continuous learning and innovation
                                     </p>
                                 </div>
                                 <div className="flex items-start">
                                     <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></div>
-                                    <p className="text-gray-700">
+                                    <p className="text-sm text-gray-700">
                                         Collaborative team environments
                                     </p>
                                 </div>
                                 <div className="flex items-start">
                                     <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3"></div>
-                                    <p className="text-gray-700">
+                                    <p className="text-sm text-gray-700">
                                         Efficient, scalable, and impactful
                                         solutions
                                     </p>
@@ -193,10 +193,10 @@ export default function About() {
                 {/* Bottom Section - Full Width */}
                 <div className="mt-8">
                     <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-gray-100">
-                        <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
+                        <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">
                             My Mission
                         </h3>
-                        <p className="text-gray-700 text-center leading-relaxed max-w-4xl mx-auto">
+                        <p className="text-sm text-gray-700 text-center leading-relaxed max-w-4xl mx-auto">
                             I am eager to contribute my skills to challenging
                             projects where{" "}
                             <span className="font-semibold text-blue-600">

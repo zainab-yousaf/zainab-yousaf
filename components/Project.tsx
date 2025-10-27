@@ -89,11 +89,11 @@ export default function Projects() {
             <div className="max-w-7xl mx-auto">
                 {/* Header Section */}
                 <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                    <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
                         Featured Projects
                     </h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"></div>
-                    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-base text-gray-600 max-w-3xl mx-auto">
                         A showcase of my recent work spanning web applications,
                         mobile development, and AI-powered solutions
                     </p>
@@ -110,7 +110,7 @@ export default function Projects() {
                             <div className="relative p-6 pb-4">
                                 <div className="flex items-start justify-between mb-4">
                                     <div className="flex-1">
-                                        <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                                        <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                                             {project.title}
                                         </h3>
                                         <div className="flex items-center text-sm text-gray-500 mb-3">
@@ -155,7 +155,7 @@ export default function Projects() {
                                     </div>
                                 </div>
 
-                                <p className="text-gray-700 leading-relaxed mb-6">
+                                <p className="text-sm text-gray-700 leading-relaxed mb-6">
                                     {project.description}
                                 </p>
                             </div>
@@ -212,10 +212,10 @@ export default function Projects() {
                 {/* Bottom CTA Section */}
                 <div className="mt-8 text-center">
                     <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-8 border border-gray-100">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                        <h3 className="text-xl font-bold text-gray-900 mb-4">
                             Interested in Working Together?
                         </h3>
-                        <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+                        <p className="text-base text-gray-600 mb-6 max-w-2xl mx-auto">
                             I'm always excited to take on new challenges and
                             create innovative solutions. Let's discuss your next
                             project!
