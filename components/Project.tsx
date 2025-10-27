@@ -17,7 +17,7 @@ const projects = [
             "Amazon SP-API",
         ],
         github: "https://github.com/zainabyousaf/automato-ai",
-        demo: "https://automato-ai.com",
+        demo: "https://www.automatoai.com/",
     },
     {
         title: "BG Zoom Mac – Video Calling Platform",
@@ -49,7 +49,7 @@ const projects = [
             "Swift Concurrency",
         ],
         github: "https://github.com/zainabyousaf/pdf-converter",
-        demo: "https://apps.apple.com/app/pdf-converter",
+        demo: "https://apps.apple.com/lv/app/pdf-converter-photo-to-pdf/id6472884610",
     },
     {
         title: "Smart Contract Security – Grey-Box Fuzzing",
