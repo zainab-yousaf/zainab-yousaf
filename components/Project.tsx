@@ -1,3 +1,5 @@
+"use client";
+
 const projects = [
     {
         title: "AutoMato AI – E-commerce Optimization Platform",
@@ -14,6 +16,8 @@ const projects = [
             "AI Integration",
             "Amazon SP-API",
         ],
+        github: "https://github.com/zainabyousaf/automato-ai",
+        demo: "https://automato-ai.com",
     },
     {
         title: "BG Zoom Mac – Video Calling Platform",
@@ -28,6 +32,8 @@ const projects = [
             "Video/Audio Streaming",
             "Cross-Platform Integration",
         ],
+        github: "https://github.com/zainabyousaf/bg-zoom",
+        demo: "https://apps.apple.com/app/bg-zoom",
     },
     {
         title: "PDF Converter iOS/macOS",
@@ -42,6 +48,8 @@ const projects = [
             "Cloud Converter API",
             "Swift Concurrency",
         ],
+        github: "https://github.com/zainabyousaf/pdf-converter",
+        demo: "https://apps.apple.com/app/pdf-converter",
     },
     {
         title: "Smart Contract Security – Grey-Box Fuzzing",
@@ -57,6 +65,8 @@ const projects = [
             "Static Analysis",
             "Tkinter",
         ],
+        github: "https://github.com/zainabyousaf/smart-contract-fuzzer",
+        demo: null,
     },
     {
         title: "Travel Website",
@@ -65,6 +75,8 @@ const projects = [
         description:
             "Responsive travel web app with Node.js, HTML, CSS, and Bootstrap. Implemented server-side features, data processing, and Jest testing for stability.",
         skills: ["Node.js", "HTML", "CSS", "Bootstrap", "SQL", "JSON", "Jest"],
+        github: "https://github.com/zainabyousaf/travel-website",
+        demo: null,
     },
 ];
 
@@ -114,12 +126,32 @@ export default function Projects() {
                                         </div>
                                     </div>
                                     <div className="flex space-x-2">
-                                        <button className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300">
-                                            <span className="text-sm">🔗</span>
-                                        </button>
-                                        <button className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-200 hover:scale-110 transition-all duration-300">
-                                            <span className="text-sm">📱</span>
-                                        </button>
+                                        {project.demo && (
+                                            <a
+                                                href={project.demo}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform duration-300"
+                                                title="View Demo"
+                                            >
+                                                <span className="text-sm">
+                                                    🔗
+                                                </span>
+                                            </a>
+                                        )}
+                                        {project.github && (
+                                            <a
+                                                href={project.github}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-gray-200 hover:scale-110 transition-all duration-300"
+                                                title="View GitHub"
+                                            >
+                                                <span className="text-sm">
+                                                    📱
+                                                </span>
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
 
@@ -158,9 +190,16 @@ export default function Projects() {
                                             Production Ready
                                         </div>
                                     </div>
-                                    <button className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300">
-                                        View Details
-                                    </button>
+                                    {project.github && (
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 inline-block"
+                                        >
+                                            View on GitHub
+                                        </a>
+                                    )}
                                 </div>
                             </div>
 

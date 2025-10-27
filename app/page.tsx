@@ -5,15 +5,129 @@ import About from "../components/About";
 import Projects from "@/components/Project";
 import Skills from "@/components/Skills";
 import ContactInfo from "@/components/ContactInfo";
+import { useState } from "react";
+import {
+    Menu,
+    X,
+    Home as HomeIcon,
+    User,
+    FolderKanban,
+    Briefcase,
+    Mail,
+} from "lucide-react";
 
 export default function Home() {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+            setMobileMenuOpen(false);
+        }
+    };
+
     return (
         <div className="flex">
             {/* Sidebar */}
             <SideNav />
 
+            {/* Mobile Menu Button */}
+            <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="fixed top-4 right-4 z-50 md:hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 rounded-lg shadow-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+            >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
+            {/* Mobile Menu Overlay */}
+            {mobileMenuOpen && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+                    onClick={() => setMobileMenuOpen(false)}
+                ></div>
+            )}
+
+            {/* Mobile Menu */}
+            <div
+                className={`fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white z-50 transform transition-transform duration-300 md:hidden ${
+                    mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+                }`}
+            >
+                <div className="flex flex-col h-full p-4">
+                    <div className="flex items-center justify-between mb-8">
+                        <h1 className="text-xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+                            Zainab Yousaf
+                        </h1>
+                        <button
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="text-gray-400 hover:text-white"
+                        >
+                            <X size={24} />
+                        </button>
+                    </div>
+
+                    <nav className="flex-1 space-y-4">
+                        <button
+                            onClick={() => scrollToSection("home")}
+                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
+                        >
+                            <HomeIcon size={20} />
+                            <span>Home</span>
+                        </button>
+                        <button
+                            onClick={() => scrollToSection("about")}
+                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
+                        >
+                            <User size={20} />
+                            <span>About</span>
+                        </button>
+                        <button
+                            onClick={() => scrollToSection("projects")}
+                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
+                        >
+                            <FolderKanban size={20} />
+                            <span>Projects</span>
+                        </button>
+                        <button
+                            onClick={() => scrollToSection("skills")}
+                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
+                        >
+                            <Briefcase size={20} />
+                            <span>Skills</span>
+                        </button>
+                        <button
+                            onClick={() => scrollToSection("contact")}
+                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
+                        >
+                            <Mail size={20} />
+                            <span>Contact</span>
+                        </button>
+                    </nav>
+
+                    <div className="border-t border-gray-700 pt-4">
+                        <div className="flex gap-3 justify-center">
+                            <a
+                                href="https://www.linkedin.com/in/zainabyousaf/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
+                            >
+                                <span className="text-lg">💼</span>
+                            </a>
+                            <a
+                                href="mailto:zainab.yousaf161@gmail.com"
+                                className="w-10 h-10 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
+                            >
+                                <span className="text-lg">📧</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {/* Main Content */}
-            <main className="ml-64 w-full">
+            <main className="md:ml-64 w-full">
                 {/* Home Section - Full Width Background */}
                 <section
                     id="home"

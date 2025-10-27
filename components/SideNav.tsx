@@ -65,7 +65,7 @@ export default function SideNav() {
     };
 
     return (
-        <nav className="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-300 shadow-2xl flex flex-col items-center p-4 border-r border-gray-700 overflow-y-auto">
+        <nav className="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-gray-300 shadow-2xl flex flex-col items-center p-4 border-r border-gray-700 overflow-y-auto hidden md:flex">
             {/* Scroll Progress Bar */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gray-700">
                 <div
