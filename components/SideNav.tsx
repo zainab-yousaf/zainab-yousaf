@@ -81,10 +81,12 @@ export default function SideNav() {
                         <div className="w-full h-full rounded-full overflow-hidden">
                             <Image
                                 src={imageProfile}
-                                alt="Zainab Yousaf"
+                                alt="Zainab Yousaf - Full-Stack Software Engineer Portfolio Photo"
                                 width={90}
                                 height={90}
                                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                                loading="lazy"
+                                priority={false}
                             />
                         </div>
                     </div>

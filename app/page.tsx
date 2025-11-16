@@ -35,7 +35,9 @@ export default function Home() {
             {/* Mobile Menu Button */}
             <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="fixed top-4 right-4 z-50 md:hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 rounded-lg shadow-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+                aria-label="Toggle mobile menu"
+                aria-expanded={mobileMenuOpen}
+                className="fixed top-4 right-4 z-50 md:hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 rounded-lg shadow-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
             >
                 {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -70,35 +72,40 @@ export default function Home() {
                     <nav className="flex-1 space-y-4">
                         <button
                             onClick={() => scrollToSection("home")}
-                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
+                            aria-label="Navigate to home section"
+                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                         >
                             <HomeIcon size={20} />
                             <span>Home</span>
                         </button>
                         <button
                             onClick={() => scrollToSection("about")}
-                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
+                            aria-label="Navigate to about section"
+                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                         >
                             <User size={20} />
                             <span>About</span>
                         </button>
                         <button
                             onClick={() => scrollToSection("projects")}
-                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
+                            aria-label="Navigate to projects section"
+                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                         >
                             <FolderKanban size={20} />
                             <span>Projects</span>
                         </button>
                         <button
                             onClick={() => scrollToSection("skills")}
-                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
+                            aria-label="Navigate to skills section"
+                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                         >
                             <Briefcase size={20} />
                             <span>Skills</span>
                         </button>
                         <button
                             onClick={() => scrollToSection("contact")}
-                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300"
+                            aria-label="Navigate to contact section"
+                            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                         >
                             <Mail size={20} />
                             <span>Contact</span>
@@ -219,19 +226,19 @@ export default function Home() {
                 </section>
 
                 {/* Other Sections - Full Width */}
-                <section id="about" className="min-h-screen bg-white">
+                <section id="about" className="min-h-screen bg-white" aria-label="About Me Section">
                     <About />
                 </section>
 
-                <section id="projects" className="min-h-screen bg-white">
+                <section id="projects" className="min-h-screen bg-white" aria-label="Projects Section">
                     <Projects />
                 </section>
 
-                <section id="skills" className="min-h-screen bg-white">
+                <section id="skills" className="min-h-screen bg-white" aria-label="Skills Section">
                     <Skills />
                 </section>
 
-                <section id="contact" className="min-h-screen bg-white">
+                <section id="contact" className="min-h-screen bg-white" aria-label="Contact Section">
                     <ContactInfo />
                 </section>
             </main>

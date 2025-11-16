@@ -50,7 +50,7 @@ export default function Contact() {
     return (
         <section
             id="contact"
-            className="min-h-screen py-12 px-4 bg-gradient-to-br from-gray-50 to-white"
+            className="min-h-screen py-16 px-4 bg-gradient-to-br from-gray-50 to-white"
         >
             <div className="max-w-7xl mx-auto px-6">
                 {/* Header Section */}

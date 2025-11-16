@@ -2,7 +2,7 @@
 
 export default function About() {
     return (
-        <div className="min-h-screen flex items-start justify-center px-4 py-8 bg-gradient-to-br from-gray-50 to-white">
+        <div className="min-h-screen flex items-start justify-center px-4 py-12 bg-gradient-to-br from-gray-50 to-white">
             <div className="max-w-6xl w-full">
                 {/* Header Section */}
                 <div className="text-center mb-8">
@@ -33,7 +33,7 @@ export default function About() {
                                 </div>
                             </div>
 
-                            <p className="text-sm text-gray-700 leading-relaxed">
+                            <p className="text-sm text-gray-700 leading-relaxed mb-4">
                                 I'm a{" "}
                                 <span className="font-semibold text-blue-600">
                                     Full-Stack Software Engineer
@@ -43,13 +43,19 @@ export default function About() {
                                     BS in Computer Science from FAST-NUCES,
                                     Pakistan
                                 </span>
-                                . I am passionate about building{" "}
+                                . I build{" "}
                                 <span className="font-semibold text-green-600">
                                     innovative, scalable, and high-performance
                                     applications
                                 </span>{" "}
                                 that solve real-world problems and deliver
                                 exceptional user experiences.
+                            </p>
+                            <p className="text-sm text-gray-700 leading-relaxed mb-4">
+                                One of my proudest achievements was developing the PDF Converter app where I faced the challenge of slow processing times. By implementing Swift Concurrency and optimizing the conversion algorithms, I <span className="font-semibold text-green-600">improved processing speed by 30%</span> and <span className="font-semibold text-green-600">reduced workload by 40%</span>, significantly enhancing user experience and app performance.
+                            </p>
+                            <p className="text-sm text-gray-700 leading-relaxed">
+                                I want to continue solving complex technical challenges and contribute to projects that make a meaningful impact. Whether it's building AI-powered e-commerce solutions or creating seamless mobile experiences, I bring a problem-solving mindset and a passion for writing clean, maintainable code.
                             </p>
                         </div>
 
@@ -75,8 +81,7 @@ export default function About() {
                                         Full-Stack Developer
                                     </p>
                                     <p className="text-gray-600 text-xs">
-                                        AI-integrated solutions and e-commerce
-                                        platforms
+                                        I build AI-integrated solutions and e-commerce platforms. My work focuses on creating scalable backend systems with NestJS and MongoDB, integrating multiple AI models (OpenAI, Claude, Gemini) to automate Amazon listing optimization, helping businesses increase their search visibility and sales.
                                     </p>
                                 </div>
                                 <div className="border-l-4 border-purple-500 pl-4">
@@ -87,8 +92,7 @@ export default function About() {
                                         iOS/macOS Apps
                                     </p>
                                     <p className="text-gray-600 text-xs">
-                                        BGZoom, PDF Converter with advanced
-                                        features
+                                        I developed BGZoom and PDF Converter apps with advanced features. The biggest challenge was implementing smooth video/audio streaming across platforms. I solved this by leveraging Swift Concurrency and AVFoundation, resulting in seamless cross-platform video calling experiences.
                                     </p>
                                 </div>
                             </div>
@@ -197,14 +201,12 @@ export default function About() {
                             My Mission
                         </h3>
                         <p className="text-sm text-gray-700 text-center leading-relaxed max-w-4xl mx-auto">
-                            I am eager to contribute my skills to challenging
+                            I'm eager to contribute my skills to challenging
                             projects where{" "}
                             <span className="font-semibold text-blue-600">
                                 innovation, ownership, and growth
                             </span>{" "}
-                            are encouraged, and I look forward to creating
-                            software solutions that make a meaningful impact for
-                            users and businesses alike.
+                            are encouraged. I want to create software solutions that make a meaningful impact for users and businesses, solving real problems with elegant, efficient code.
                         </p>
                     </div>
                 </div>
