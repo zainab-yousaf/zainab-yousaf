@@ -29,7 +29,7 @@ export default function Hero() {
               Zainab Yousaf
             </h1>
             <p className="text-sm text-[#8a8a82] mt-0.5">
-              AI Engineer · Full-Stack · DFKI Germany Research
+              AI Engineer · Multi-Agent Systems · RAG · DFKI Germany Research
             </p>
           </div>
         </div>
