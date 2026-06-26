@@ -82,7 +82,7 @@ export default function BentoGrid() {
                         <p className="text-xs text-[#8a8a82]">Currently available</p>
                         <h3 className="text-base font-semibold text-[#1a1a18]">Open to remote roles</h3>
                         <p className="text-sm text-[#5a5a52] leading-relaxed">
-                            Seeking AI Engineer and Full-Stack AI positions globally. BS Computer Science, FAST-NUCES. Dean's List x2.
+                            Seeking AI Engineer and Full-Stack AI positions globally. Dean's List x2.
                         </p>
                     </div>
                     <div className="flex flex-wrap gap-2 mt-4">
