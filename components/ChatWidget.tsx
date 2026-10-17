@@ -130,7 +130,7 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                 <div
                     role="dialog"
                     aria-label="Ask my AI"
-                    className="fixed z-[60] bottom-20 right-4 left-4 sm:left-auto sm:w-[380px] h-[min(560px,calc(100dvh-7rem))] bg-surface border border-line rounded-2xl flex flex-col overflow-hidden shadow-[0_20px_60px_-20px_rgba(34,211,238,0.35)]"
+                    className="fixed z-[60] bottom-20 right-4 left-4 sm:left-auto sm:w-[380px] h-[min(560px,calc(100dvh-7rem))] bg-surface border border-line rounded-2xl flex flex-col overflow-hidden shadow-[0_24px_60px_-24px_rgba(169,60,19,0.35)]"
                 >
                     {/* Header */}
                     <div className="flex items-center justify-between px-5 py-4 border-b border-line">
@@ -174,7 +174,7 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                                 <div
                                     className={`max-w-[85%] text-sm leading-relaxed px-3.5 py-2.5 rounded-2xl whitespace-pre-wrap break-words ${
                                         m.role === "user"
-                                            ? "text-bg bg-accent rounded-tr-md"
+                                            ? "text-fg bg-accent rounded-tr-md"
                                             : "text-fg/85 bg-surface-2 rounded-tl-md"
                                     }`}
                                 >
@@ -220,7 +220,7 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                             type="submit"
                             disabled={loading || !input.trim()}
                             aria-label="Send"
-                            className="w-10 h-10 shrink-0 flex items-center justify-center rounded-xl text-bg bg-accent transition-opacity hover:opacity-90 disabled:opacity-40"
+                            className="w-10 h-10 shrink-0 flex items-center justify-center rounded-xl text-fg bg-accent transition-opacity hover:opacity-90 disabled:opacity-40"
                         >
                             <Send className="w-4 h-4" />
                         </button>
@@ -233,7 +233,7 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                 aria-expanded={open}
                 tabIndex={open || pastHero ? 0 : -1}
                 aria-hidden={!(open || pastHero)}
-                className={`${open || pastHero ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3 pointer-events-none"} fixed z-[60] bottom-4 right-4 text-sm font-semibold text-bg bg-accent px-5 py-3 rounded-full hover:scale-[1.03] shadow-[0_8px_28px_-8px_var(--color-accent)] transition-[opacity,transform] duration-300`}
+                className={`${open || pastHero ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3 pointer-events-none"} fixed z-[60] bottom-4 right-4 text-sm font-semibold text-fg bg-accent px-5 py-3 rounded-full hover:scale-[1.03] shadow-[0_8px_28px_-8px_var(--color-accent)] transition-[opacity,transform] duration-300`}
             >
                 {open ? "Close" : "✨ Ask my AI"}
             </button>

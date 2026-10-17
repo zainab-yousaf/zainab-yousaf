@@ -1,16 +1,13 @@
-import TimelineRail from "./ui/TimelineRail";
-import FadeIn from "./ui/FadeIn";
-import SpotlightCard from "./ui/SpotlightCard";
-import SectionHeading from "./ui/SectionHeading";
-import { Tags } from "./ui/Tag";
+// All portfolio content in one place, shared by the bento tiles and their detail views.
+// Keep in sync with lib/about-me.ts (what the "Ask my AI" chat knows).
 
-type SubRole = {
+export type SubRole = {
     title: string;
     meta?: string;
     bullets: string[];
 };
 
-type Entry = {
+export type Entry = {
     title: string;
     company?: string;
     location: string;
@@ -22,7 +19,7 @@ type Entry = {
     tech?: string[];
 };
 
-const experience: Entry[] = [
+export const experience: Entry[] = [
     {
         title: "Founding Engineer (Full-Stack AI)",
         company: "DreamDesk AI",
@@ -121,77 +118,138 @@ const experience: Entry[] = [
     },
 ];
 
-function Bullets({ items }: { items: string[] }) {
-    return (
-        <ul className="space-y-1.5">
-            {items.map((b) => (
-                <li key={b} className="flex gap-2.5 text-sm text-muted leading-relaxed">
-                    <span className="text-accent/70 shrink-0 font-mono" aria-hidden="true">
-                        ›
-                    </span>
-                    <span>{b}</span>
-                </li>
-            ))}
-        </ul>
-    );
-}
+export type Project = {
+    title: string;
+    period: string;
+    org: string;
+    role: string;
+    description: string;
+    impact: string;
+    skills: string[];
+    github: string | null;
+    demo: { href: string; label: string } | null;
+    caseStudy?: boolean;
+};
 
-export default function Experience() {
-    return (
-        <section id="experience" className="defer-render max-w-[1100px] mx-auto px-4 sm:px-6 pt-24">
-            <SectionHeading eyebrow="// experience" title="Where I've worked" />
-            <div className="relative">
-                <TimelineRail />
-                <ol className="space-y-5">
-                    {experience.map((job, idx) => (
-                        <li key={job.title} className="relative pl-8 sm:pl-10">
-                            <span
-                                className={`absolute left-0 top-6 w-[15px] h-[15px] rounded-full border-2 border-accent ${
-                                    idx === 0 ? "bg-accent shadow-[0_0_12px_var(--color-accent)]" : "bg-bg"
-                                }`}
-                                aria-hidden="true"
-                            />
-                            <FadeIn fromRight>
-                            <SpotlightCard lift={false} className="p-5 sm:p-6 space-y-3">
-                                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 md:gap-4">
-                                    <div>
-                                        <h3 className="font-display text-lg font-bold text-fg leading-snug">{job.title}</h3>
-                                        <p className="text-sm text-fg/80 mt-0.5">
-                                            {[job.company, job.location].filter(Boolean).join(" · ")}
-                                        </p>
-                                    </div>
-                                    <p className="font-mono text-xs text-accent md:pt-1 shrink-0">{job.period}</p>
-                                </div>
+export const projects: Project[] = [
+    {
+        title: "DreamDesk: Hotel AI Agent Platform",
+        period: "Jan 2026 – Present",
+        org: "DreamDesk AI · UK (Remote)",
+        role: "Founding Engineer (Full-Stack AI)",
+        description:
+            "Multi-channel AI agents that answer guests on every channel from one platform, look up live reservations, and escalate to staff when they're not confident. Works across voice calls, WhatsApp, email and web chat.",
+        impact: "Live across 3 hotels, ~1.6s voice agent response time",
+        skills: ["Python", "FastAPI", "Pydantic AI", "VAPI", "Retell", "MCP", "Pinecone", "PostgreSQL", "Next.js", "GCP Cloud Run", "Logfire", "PostHog"],
+        github: null,
+        demo: null,
+        caseStudy: true,
+    },
+    {
+        title: "AutoMato AI: E-commerce Optimization Platform",
+        period: "Jul 2025 – Dec 2025",
+        org: "AutoMato AI",
+        role: "Software Engineer",
+        description:
+            "GenAI pipeline that automated Amazon product listings for 50+ companies and sellers. Pulls live competitor data through the Amazon Seller API to extract high-ranking keywords, then uses OpenAI to generate SEO-optimized listing content. Built on NestJS microservices with PostgreSQL and a React dashboard for listing review, editing and publishing.",
+        impact: "50+ companies served, 40–60% less manual effort",
+        skills: ["NestJS", "React", "TypeScript", "PostgreSQL", "OpenAI API", "Amazon Seller API"],
+        github: null,
+        demo: null,
+    },
+    {
+        title: "Smart Contract Security: Grey-Box Fuzzing",
+        period: "Aug 2023 – Apr 2024",
+        org: "DFKI Germany × FAST-NUCES",
+        role: "Research Collaborator",
+        description:
+            "Information Flow Guided Grey-Box Fuzzing for smart contract vulnerability detection. Combines static analysis with grey-box fuzzing: information-flow analysis guides the fuzzer toward high-risk code paths, so it improves vulnerability detection while cutting resource usage by 25%. Validated with researchers from DFKI Germany and FAST-NUCES.",
+        impact: "Improves vulnerability detection while cutting resource usage by 25%",
+        skills: ["Python", "Solidity", "Slither", "Echidna", "Foundry", "Static Analysis"],
+        github: null,
+        demo: null,
+    },
+    {
+        title: "BGZoom: macOS Video Calling App",
+        period: "Mar 2025 – Jun 2025",
+        org: "KATco",
+        role: "Software Engineer (iOS/macOS)",
+        description:
+            "macOS video-calling app with real-time background effects for Zoom, Google Meet, Teams and Skype. Implemented Swift Concurrency for async streaming and optimized AVFoundation integration for low-latency video and audio.",
+        impact: "Shipped for macOS with real-time background effects",
+        skills: ["Swift", "SwiftUI", "AppKit", "AVFoundation", "Swift Concurrency"],
+        github: null,
+        demo: null,
+    },
+    {
+        title: "PDF Converter iOS / macOS",
+        period: "Nov 2024 – Jun 2025",
+        org: "KATco",
+        role: "Software Engineer (iOS/macOS)",
+        description:
+            "PDF and image converter built end to end: image-to-PDF conversion, PDF rotation, and image resize, crop and watermarking. Live on the App Store with a 5.0 rating. Swift Concurrency improved processing speed by 30%, and Cloud Converter API integration cut manual processing effort by 40%.",
+        impact: "Live on the App Store with a 5.0 rating",
+        skills: ["Swift", "SwiftUI", "UIKit", "Cloud Converter API", "Swift Concurrency"],
+        github: null,
+        demo: { href: "https://apps.apple.com/lv/app/pdf-converter-photo-to-pdf/id6472884610", label: "App Store ↗" },
+    },
+];
 
-                                {job.summary && <p className="text-sm text-fg/80 italic">{job.summary}</p>}
-                                {job.bullets && <Bullets items={job.bullets} />}
-                                {job.note && <p className="text-xs text-subtle leading-relaxed">{job.note}</p>}
+export const skills: Record<string, string[]> = {
+    "AI & Agents": [
+        "Pydantic AI",
+        "LangChain",
+        "LangGraph",
+        "RAG",
+        "MCP",
+        "Tool Calling",
+        "Prompt Engineering",
+        "OpenAI",
+        "Gemini",
+        "Multi-Agent Systems",
+    ],
+    "Voice AI": ["VAPI", "Retell", "Text-to-Speech", "Voice Cloning"],
+    Backend: [
+        "Python",
+        "FastAPI",
+        "Node.js",
+        "NestJS",
+        "TypeScript",
+        "REST APIs",
+        "Webhooks",
+        "Microservices",
+    ],
+    Data: ["PostgreSQL", "MongoDB", "Redis", "Pinecone"],
+    "Infra & Observability": ["Docker", "GCP Cloud Run", "GitHub Actions", "Logfire", "PostHog"],
+    Frontend: ["Next.js", "React", "React Flow", "Tailwind CSS"],
+    Mobile: ["Swift", "SwiftUI", "UIKit", "AppKit", "Swift Concurrency"],
+    "Research & Security": [
+        "Static Analysis",
+        "Grey-Box Fuzzing",
+        "Solidity",
+        "Slither",
+        "Echidna",
+        "Foundry",
+    ],
+};
 
-                                {job.subRoles && (
-                                    <div className="space-y-3 pt-1">
-                                        {job.subRoles.map((sub) => (
-                                            <div key={sub.title} className="pl-4 border-l-2 border-line">
-                                                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-0.5 md:gap-4 mb-1">
-                                                    <p className="text-sm font-medium text-fg">{sub.title}</p>
-                                                    {sub.meta && <p className="font-mono text-xs text-subtle shrink-0">{sub.meta}</p>}
-                                                </div>
-                                                <Bullets items={sub.bullets} />
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
 
-                                {job.tech && (
-                                    <div className="pt-2">
-                                        <Tags items={job.tech} />
-                                    </div>
-                                )}
-                            </SpotlightCard>
-                            </FadeIn>
-                        </li>
-                    ))}
-                </ol>
-            </div>
-        </section>
-    );
-}
+export const dreamDeskResults = [
+    { value: "3 hotels", label: "live in production" },
+    { value: "~1.6s", label: "voice agent response time" },
+    { value: "4 weeks", label: "to deliver the POC" },
+];
+
+export const education = {
+    degree: "BS Computer Science",
+    school: "FAST-NUCES, Faisalabad",
+    period: "2020 – 2024",
+    honours: "Dean's List (2x)",
+};
+
+export const contact = {
+    email: "zainab.yousaf161@gmail.com",
+    linkedin: "https://www.linkedin.com/in/zainabyousaf/",
+    github: "https://github.com/zainab-yousaf",
+    cv: "/Zainab_Yousaf_Resume.pdf",
+};

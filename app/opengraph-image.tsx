@@ -16,19 +16,19 @@ export default function OpengraphImage() {
                     flexDirection: "column",
                     justifyContent: "space-between",
                     padding: "72px 80px",
-                    background: "#09090b",
-                    color: "#ededf0",
+                    background: "#f5f1ea",
+                    color: "#1c1915",
                     fontFamily: "sans-serif",
                 }}
             >
-                <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 26, color: "#a1a1aa" }}>
-                    <div style={{ width: 14, height: 14, borderRadius: 9999, background: "#22c55e" }} />
+                <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 26, color: "#5c554b" }}>
+                    <div style={{ width: 14, height: 14, borderRadius: 9999, background: "#2f8a4c" }} />
                     Open to remote roles
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                     <div style={{ fontSize: 96, fontWeight: 700, letterSpacing: -2 }}>Zainab Yousaf</div>
-                    <div style={{ fontSize: 40, color: "#22d3ee" }}>
+                    <div style={{ fontSize: 40, color: "#a93c13" }}>
                         Founding AI Engineer · AI Agents · Voice AI · RAG
                     </div>
                 </div>
@@ -39,13 +39,13 @@ export default function OpengraphImage() {
                         justifyContent: "space-between",
                         alignItems: "center",
                         fontSize: 26,
-                        color: "#71717a",
-                        borderTop: "2px solid #26262c",
+                        color: "#6f675c",
+                        borderTop: "2px solid #e3dacb",
                         paddingTop: 28,
                     }}
                 >
                     <div style={{ display: "flex" }}>AI agents live across 3 hotels · ~1.6s voice response</div>
-                    <div style={{ display: "flex", color: "#ededf0" }}>zainab-yousaf.vercel.app</div>
+                    <div style={{ display: "flex", color: "#1c1915" }}>zainab-yousaf.vercel.app</div>
                 </div>
             </div>
         ),

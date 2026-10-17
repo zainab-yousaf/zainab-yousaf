@@ -116,15 +116,15 @@ function Diagram({ layout, className }: { layout: Layout; className: string }) {
             ))}
 
             {/* The black box */}
-            <rect x={core.x} y={core.y} width={core.w} height={core.h} rx="12" fill="#050506" stroke="var(--color-line)" />
+            <rect x={core.x} y={core.y} width={core.w} height={core.h} rx="12" fill="var(--color-fg)" stroke="var(--color-fg)" />
             <g transform={`translate(${core.x + core.w / 2 - 7}, ${core.y + 18})`} stroke="var(--color-accent)" strokeWidth="1.5" fill="none">
                 <rect x="0.75" y="7" width="12.5" height="9" rx="2" />
                 <path d="M3.5 7V5a3.5 3.5 0 0 1 7 0v2" strokeLinecap="round" />
             </g>
-            <text x={core.x + core.w / 2} y={core.y + core.h / 2 + 10} textAnchor="middle" fill="var(--color-fg)" fontSize="13" fontWeight="600">
+            <text x={core.x + core.w / 2} y={core.y + core.h / 2 + 10} textAnchor="middle" fill="var(--color-bg)" fontSize="13" fontWeight="600">
                 DreamDesk AI
             </text>
-            <text x={core.x + core.w / 2} y={core.y + core.h / 2 + 26} textAnchor="middle" fill="var(--color-subtle)" fontSize="10" className="font-mono">
+            <text x={core.x + core.w / 2} y={core.y + core.h / 2 + 26} textAnchor="middle" fill="#c9c1b4" fontSize="10" className="font-mono">
                 internals private
             </text>
 
@@ -160,7 +160,7 @@ function Diagram({ layout, className }: { layout: Layout; className: string }) {
                     key={cycle}
                     r="5"
                     fill="var(--color-accent)"
-                    style={{ filter: "drop-shadow(0 0 6px var(--color-accent))" }}
+                    style={{ filter: "drop-shadow(0 0 4px var(--color-accent))" }}
                     initial={{ cx: xs[0], cy: ys[0], opacity: 0 }}
                     animate={{ cx: xs, cy: ys, opacity: [0, 1, 1, 0] }}
                     transition={{
@@ -176,13 +176,14 @@ function Diagram({ layout, className }: { layout: Layout; className: string }) {
     );
 }
 
-export default function DreamDeskDiagram() {
+// `fit`: fill the parent's height (used inside the bento tile) instead of sizing by width.
+export default function DreamDeskDiagram({ className = "", fit = false }: { className?: string; fit?: boolean }) {
     return (
         <figure
-            className="rounded-xl border border-line bg-bg/60 p-3 sm:p-5"
+            className={`rounded-2xl border border-line bg-bg/70 p-3 sm:p-4 ${className}`}
             aria-label="DreamDesk overview: guest messages from voice, WhatsApp, email and web chat go into the DreamDesk AI platform, which replies to the guest or escalates to hotel staff when confidence is low."
         >
-            <Diagram layout={WIDE} className="hidden sm:block w-full max-w-[560px] mx-auto h-auto" />
+            <Diagram layout={WIDE} className={`hidden sm:block w-full mx-auto ${fit ? "h-full" : "max-w-[560px] h-auto"}`} />
             <Diagram layout={TALL} className="sm:hidden w-full max-w-[340px] mx-auto h-auto" />
         </figure>
     );
