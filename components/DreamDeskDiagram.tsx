@@ -177,13 +177,22 @@ function Diagram({ layout, className }: { layout: Layout; className: string }) {
 }
 
 // `fit`: fill the parent's height (used inside the bento tile) instead of sizing by width.
-export default function DreamDeskDiagram({ className = "", fit = false }: { className?: string; fit?: boolean }) {
+// `large`: a bigger version for the case-study section.
+export default function DreamDeskDiagram({
+    className = "",
+    fit = false,
+    large = false,
+}: {
+    className?: string;
+    fit?: boolean;
+    large?: boolean;
+}) {
     return (
         <figure
             className={`rounded-2xl border border-line bg-bg/70 p-3 sm:p-4 ${className}`}
             aria-label="DreamDesk overview: guest messages from voice, WhatsApp, email and web chat go into the DreamDesk AI platform, which replies to the guest or escalates to hotel staff when confidence is low."
         >
-            <Diagram layout={WIDE} className={`hidden sm:block w-full mx-auto ${fit ? "h-full" : "max-w-[560px] h-auto"}`} />
+            <Diagram layout={WIDE} className={`hidden sm:block w-full mx-auto ${fit ? "h-full" : large ? "max-w-[860px] h-auto" : "max-w-[560px] h-auto"}`} />
             <Diagram layout={TALL} className="sm:hidden w-full max-w-[340px] mx-auto h-auto" />
         </figure>
     );

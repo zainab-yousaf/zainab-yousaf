@@ -5,7 +5,7 @@ import { X, Send } from "lucide-react";
 
 import { OPEN_CHAT_EVENT } from "@/lib/chat-events";
 
-// Floating "Ask my AI" chat. Anything can open it with openChat() from lib/chat-events.
+// "Ask my AI" chat panel. It is opened with openChat() from lib/chat-events (bento tile, sticky nav).
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -59,14 +59,6 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
     const [loading, setLoading] = useState(false);
     const endRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-
-    const [pastHero, setPastHero] = useState(false);
-    useEffect(() => {
-        const onScroll = () => setPastHero(window.scrollY > window.innerHeight * 0.6);
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
 
     useEffect(() => {
         const onOpen = () => setOpen(true);
@@ -130,7 +122,7 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                 <div
                     role="dialog"
                     aria-label="Ask my AI"
-                    className="fixed z-[60] bottom-20 right-4 left-4 sm:left-auto sm:w-[380px] h-[min(560px,calc(100dvh-7rem))] bg-surface border border-line rounded-2xl flex flex-col overflow-hidden shadow-[0_24px_60px_-24px_rgba(169,60,19,0.35)]"
+                    className="fixed z-[60] bottom-4 right-4 left-4 sm:left-auto sm:w-[380px] h-[min(560px,calc(100dvh-2rem))] bg-surface border border-line rounded-2xl flex flex-col overflow-hidden shadow-[0_24px_60px_-24px_rgba(169,60,19,0.35)]"
                 >
                     {/* Header */}
                     <div className="flex items-center justify-between px-5 py-4 border-b border-line">
@@ -228,15 +220,6 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                 </div>
             )}
 
-            <button
-                onClick={() => setOpen((o) => !o)}
-                aria-expanded={open}
-                tabIndex={open || pastHero ? 0 : -1}
-                aria-hidden={!(open || pastHero)}
-                className={`${open || pastHero ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3 pointer-events-none"} fixed z-[60] bottom-4 right-4 text-sm font-semibold text-fg bg-accent px-5 py-3 rounded-full hover:scale-[1.03] shadow-[0_8px_28px_-8px_var(--color-accent)] transition-[opacity,transform] duration-300`}
-            >
-                {open ? "Close" : "✨ Ask my AI"}
-            </button>
         </>
     );
 }
