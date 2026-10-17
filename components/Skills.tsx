@@ -46,7 +46,7 @@ export default function Skills() {
                 {Object.entries(skills).map(([category, items]) => (
                     <div
                         key={category}
-                        className="bg-white rounded-2xl p-6"
+                        className="lift bg-white rounded-2xl p-6"
                         style={{ border: "1px solid #e0dfd8" }}
                     >
                         <h3 className="text-sm font-semibold text-[#1a1a18] mb-3">{category}</h3>

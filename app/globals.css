@@ -35,3 +35,72 @@ body {
     background: #d3d1c7;
     border-radius: 3px;
 }
+
+/* Scroll reveal (see components/Reveal.tsx) */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal.reveal-shown {
+    opacity: 1;
+    transform: none;
+}
+
+/* Hover lift for cards */
+.lift {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px -12px rgba(26, 26, 24, 0.18);
+}
+
+/* Chat demo (see components/ChatDemo.tsx) */
+@keyframes msg-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+.chat-msg-in {
+    animation: msg-in 0.35s ease-out both;
+}
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    30% {
+        transform: translateY(-3px);
+        opacity: 1;
+    }
+}
+.typing-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: #8a8a82;
+    animation: typing 1s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    .reveal,
+    .lift,
+    .lift:hover {
+        transition: none;
+        transform: none;
+    }
+    .chat-msg-in,
+    .typing-dot,
+    .animate-ping {
+        animation: none;
+    }
+}

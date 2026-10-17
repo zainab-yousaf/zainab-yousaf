@@ -12,7 +12,7 @@ export default function MetricsStrip() {
         {metrics.map(({ value, label }) => (
           <div
             key={value}
-            className="bg-white rounded-2xl p-5"
+            className="lift bg-white rounded-2xl p-5"
             style={{ border: "0.5px solid #e0dfd8" }}
           >
             <div className="text-xl font-bold text-[#1a1a18]">{value}</div>

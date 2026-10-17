@@ -6,7 +6,7 @@ export default function BentoGrid() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {/* Card 1 — DreamDesk (spans 2 cols) */}
         <div
-          className="col-span-1 md:col-span-2 rounded-2xl p-7 flex flex-col justify-between min-h-[280px]"
+          className="lift col-span-1 md:col-span-2 rounded-2xl p-7 flex flex-col justify-between min-h-[280px]"
           style={{ background: "#1a1a18" }}
         >
           <div className="space-y-3">
@@ -64,7 +64,7 @@ export default function BentoGrid() {
 
         {/* Card 2 — DFKI Research */}
         <div
-          className="rounded-2xl p-6 flex flex-col justify-between bg-white"
+          className="lift rounded-2xl p-6 flex flex-col justify-between bg-white"
           style={{ border: "0.5px solid #e0dfd8" }}
         >
           <div className="space-y-3">
@@ -98,7 +98,7 @@ export default function BentoGrid() {
 
         {/* Card 3 — Core Stack (spans 2 cols) */}
         <div
-          className="col-span-1 md:col-span-2 rounded-2xl p-6 bg-white"
+          className="lift col-span-1 md:col-span-2 rounded-2xl p-6 bg-white"
           style={{ border: "0.5px solid #e0dfd8" }}
         >
           <h3 className="text-base font-semibold text-[#1a1a18] mb-4">
@@ -128,7 +128,7 @@ export default function BentoGrid() {
 
         {/* Card 4 — Availability */}
         <div
-          className="rounded-2xl p-6 flex flex-col justify-between bg-white"
+          className="lift rounded-2xl p-6 flex flex-col justify-between bg-white"
           style={{ border: "0.5px solid #e0dfd8" }}
         >
           <div className="space-y-3">
@@ -137,12 +137,11 @@ export default function BentoGrid() {
               Open to remote roles
             </h3>
             <p className="text-sm text-[#5a5a52] leading-relaxed">
-              Open to remote roles (full-time, part-time or contract) with UK
-              and US overlap.
+              Open to all remote roles: full-time, part-time or contract.
             </p>
           </div>
           <div className="flex flex-wrap gap-2 mt-4">
-            {["AI Engineer", "AI Automation", "Remote"].map((t) => (
+            {["AI Engineer", "AI Automation", "Remote", "Part-time"].map((t) => (
               <span
                 key={t}
                 className="inline-block text-xs px-2.5 py-1 rounded-full text-[#5a5a52]"

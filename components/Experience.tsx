@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 type SubRole = {
     title: string;
     meta?: string;
@@ -152,7 +154,8 @@ export default function Experience() {
                             }}
                             aria-hidden="true"
                         />
-                        <div className="bg-white rounded-2xl p-6 space-y-3" style={{ border: "0.5px solid #e0dfd8" }}>
+                        <Reveal>
+                        <div className="lift bg-white rounded-2xl p-6 space-y-3" style={{ border: "0.5px solid #e0dfd8" }}>
                             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 md:gap-4">
                                 <div>
                                     <h3 className="text-base font-semibold text-[#1a1a18] leading-snug">{job.title}</h3>
@@ -195,6 +198,7 @@ export default function Experience() {
                                 </div>
                             )}
                         </div>
+                        </Reveal>
                     </li>
                 ))}
                 </ol>

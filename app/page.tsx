@@ -6,6 +6,7 @@ import Experience from "../components/Experience";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import Contact from "../components/ContactInfo";
+import Reveal from "../components/Reveal";
 
 export default function Home() {
     return (
@@ -14,9 +15,14 @@ export default function Home() {
             <main className="max-w-[1100px] mx-auto px-6">
                 <Hero />
                 <MetricsStrip />
-                <BentoGrid />
+                <Reveal>
+                    <BentoGrid />
+                </Reveal>
                 <Experience />
-                <Projects />
+                <Reveal>
+                    <Projects />
+                </Reveal>
+                <Reveal>
                 <section className="pt-16 pb-4">
                     <h2 className="text-xl font-semibold text-[#1a1a18] mb-6">Education</h2>
                     <div className="bg-white rounded-2xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4" style={{ border: "1px solid #e0dfd8" }}>
@@ -27,8 +33,13 @@ export default function Home() {
                         <span className="self-start md:self-auto text-xs px-3 py-1.5 rounded-full bg-[#f4f4f0] text-[#3a3a32]" style={{ border: "0.5px solid #e0dfd8" }}>Dean's List (2x)</span>
                     </div>
                 </section>
-                <Skills />
-                <Contact />
+                </Reveal>
+                <Reveal>
+                    <Skills />
+                </Reveal>
+                <Reveal>
+                    <Contact />
+                </Reveal>
                 <footer className="py-8 text-center text-xs text-[#8a8a82]">
                     © {new Date().getFullYear()} Zainab Yousaf
                 </footer>

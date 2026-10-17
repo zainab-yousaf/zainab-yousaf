@@ -167,7 +167,7 @@ export default function Projects() {
                     return (
                         <div
                             key={project.title}
-                            className={`bg-white rounded-2xl p-6 flex flex-col justify-between hover:shadow-sm transition-shadow ${
+                            className={`bg-white rounded-2xl p-6 flex flex-col justify-between ${expanded ? "" : "lift"} ${
                                 expanded ? "md:col-span-2" : ""
                             }`}
                             style={{ border: "0.5px solid #e0dfd8" }}
