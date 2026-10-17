@@ -1,20 +1,37 @@
 @import "tailwindcss";
 
-:root {
-    --background: #f8f8f6;
-    --foreground: #1a1a18;
+/* Design tokens: one dark theme, one accent (cyan). Utilities like bg-surface, text-muted,
+   border-line and text-accent come from these. */
+@theme {
+    --color-bg: #09090b;
+    --color-surface: #111114;
+    --color-surface-2: #18181c;
+    --color-line: #26262c;
+    --color-fg: #ededf0;
+    --color-muted: #a1a1aa;
+    --color-subtle: #8b8b95;
+    --color-accent: #22d3ee;
+    --color-ok: #22c55e;
+    --color-warn: #f5b84a;
+}
+
+@theme inline {
+    --font-sans: var(--font-body), system-ui, -apple-system, sans-serif;
+    --font-mono: var(--font-code), ui-monospace, SFMono-Regular, monospace;
+    --font-display: var(--font-heading), var(--font-body), system-ui, sans-serif;
 }
 
 html {
     scroll-behavior: smooth;
+    background: var(--color-bg);
+    color-scheme: dark;
 }
 
 body {
-    background: #f8f8f6;
-    color: #1a1a18;
-    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
     margin: 0;
-    padding: 0;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -24,49 +41,121 @@ body {
     box-sizing: border-box;
 }
 
-/* Thin scrollbar */
+/* Below-the-fold sections skip layout and paint until they're near the viewport, which keeps the
+   first paint fast on slow phones. The size hint stops the scrollbar from jumping. */
+.defer-render {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+}
+
+/* Keep section headings clear of the sticky navbar when jumping to them */
+section[id] {
+    scroll-margin-top: 80px;
+}
+
+::selection {
+    background: color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: #f8f8f6;
+    background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-    background: #d3d1c7;
-    border-radius: 3px;
+    background: var(--color-line);
+    border-radius: 4px;
 }
 
-/* Scroll reveal (see components/Reveal.tsx) */
-.reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+/* Hero backdrop: faint dot grid fading out at the edges, plus a slow drifting glow */
+.dot-grid {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%);
 }
-.reveal.reveal-shown {
-    opacity: 1;
-    transform: none;
+@keyframes drift {
+    0%, 100% {
+        transform: translate(-10%, -6%) scale(1);
+    }
+    50% {
+        transform: translate(12%, 8%) scale(1.15);
+    }
+}
+.glow-blob {
+    background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 22%, transparent), transparent 65%);
+    animation: drift 18s ease-in-out infinite;
+    will-change: transform;
 }
 
-/* Hover lift for cards */
-.lift {
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+/* Spotlight card: a soft accent glow on the border follows the pointer (see SpotlightCard.tsx) */
+.spotlight {
+    position: relative;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    transition: transform 0.25s ease-out, border-color 0.25s ease-out;
 }
-.lift:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px -12px rgba(26, 26, 24, 0.18);
+/* The masked glow layer is only created while hovering with a mouse, so it costs nothing at load
+   or on touch screens. */
+@media (hover: hover) {
+.spotlight:hover::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+        320px circle at var(--mx, 50%) var(--my, 50%),
+        color-mix(in srgb, var(--color-accent) 70%, transparent),
+        transparent 60%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+}
+.spotlight.lift:hover {
+    transform: translateY(-4px);
+}
+
+/* Blinking caret for the typed role and the terminal */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+.caret {
+    animation: blink 1s step-end infinite;
+}
+
+/* Infinite tech marquee (content is duplicated, so -50% loops seamlessly) */
+@keyframes marquee {
+    to {
+        transform: translateX(-50%);
+    }
+}
+.marquee-track {
+    animation: marquee 40s linear infinite;
+}
+.marquee-mask {
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
     }
-    .reveal,
-    .lift,
-    .lift:hover {
+    .glow-blob,
+    .caret,
+    .marquee-track,
+    .animate-ping,
+    .animate-bounce {
+        animation: none !important;
+    }
+    .spotlight,
+    .spotlight.lift:hover {
         transition: none;
         transform: none;
-    }
-    .animate-ping {
-        animation: none;
     }
 }

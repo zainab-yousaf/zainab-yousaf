@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { Mail, Send, CheckCircle, AlertCircle } from "lucide-react";
+import SectionHeading from "./ui/SectionHeading";
+import { openChat } from "@/lib/chat-events";
 
 export default function Contact() {
     const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
@@ -36,22 +38,21 @@ export default function Contact() {
     };
 
     const inputClass =
-        "w-full px-4 py-2.5 text-sm text-[#1a1a18] bg-[#f8f8f6] rounded-xl transition-colors focus:outline-none focus:ring-1 focus:ring-[#c0bfb7]";
-    const inputStyle = { border: "1px solid #e0dfd8" };
+        "w-full px-4 py-3 text-sm text-fg placeholder:text-subtle bg-bg border border-line rounded-xl transition-colors focus:outline-none focus:border-accent/70 focus:ring-1 focus:ring-accent/40";
 
     return (
-        <section id="contact" className="pt-16 pb-10">
-            <h2 className="text-xl font-semibold text-[#1a1a18] mb-2">Get in touch</h2>
-            <p className="text-sm text-[#8a8a82] mb-8">
+        <section id="contact" className="defer-render max-w-[1100px] mx-auto px-4 sm:px-6 pt-24 pb-12">
+            <SectionHeading eyebrow="// contact" title="Let's build something" />
+            <p className="text-[15px] text-muted -mt-4 mb-8 max-w-xl">
                 Open to all remote AI Engineer and AI Automation roles: full-time, part-time or contract.
             </p>
 
             <div className="grid md:grid-cols-2 gap-4">
                 {/* Contact Form */}
-                <div className="bg-white rounded-2xl p-6" style={{ border: "1px solid #e0dfd8" }}>
-                    <h3 className="text-sm font-semibold text-[#1a1a18] mb-4">Send a message</h3>
+                <div className="rounded-2xl border border-line bg-surface p-5 sm:p-6">
+                    <h3 className="font-mono text-xs text-accent mb-4">send a message</h3>
                     <form onSubmit={handleSubmit} className="space-y-3">
-                        <div className="grid grid-cols-2 gap-3">
+                        <div className="grid sm:grid-cols-2 gap-3">
                             <input
                                 type="text"
                                 name="name"
@@ -59,8 +60,8 @@ export default function Contact() {
                                 onChange={handleInputChange}
                                 required
                                 placeholder="Your name"
+                                aria-label="Your name"
                                 className={inputClass}
-                                style={inputStyle}
                             />
                             <input
                                 type="email"
@@ -69,8 +70,8 @@ export default function Contact() {
                                 onChange={handleInputChange}
                                 required
                                 placeholder="Your email"
+                                aria-label="Your email"
                                 className={inputClass}
-                                style={inputStyle}
                             />
                         </div>
                         <input
@@ -80,8 +81,8 @@ export default function Contact() {
                             onChange={handleInputChange}
                             required
                             placeholder="Subject"
+                            aria-label="Subject"
                             className={inputClass}
-                            style={inputStyle}
                         />
                         <textarea
                             name="message"
@@ -90,16 +91,16 @@ export default function Contact() {
                             required
                             rows={5}
                             placeholder="Your message"
+                            aria-label="Your message"
                             className={inputClass + " resize-none"}
-                            style={inputStyle}
                         />
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full flex items-center justify-center gap-2 text-sm font-medium text-white bg-[#1a1a18] px-5 py-2.5 rounded-xl hover:bg-[#333330] transition-colors disabled:opacity-50"
+                            className="w-full flex items-center justify-center gap-2 text-sm font-semibold text-bg bg-accent px-5 py-3 rounded-xl transition-shadow hover:shadow-[0_0_28px_-6px_var(--color-accent)] disabled:opacity-50"
                         >
                             {isSubmitting ? (
-                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                <div className="w-4 h-4 border-2 border-bg border-t-transparent rounded-full animate-spin" />
                             ) : (
                                 <Send className="w-4 h-4" />
                             )}
@@ -107,13 +108,13 @@ export default function Contact() {
                         </button>
 
                         {submitStatus === "success" && (
-                            <div className="flex items-center gap-2 text-sm text-green-700 bg-green-50 px-4 py-3 rounded-xl">
+                            <div className="flex items-center gap-2 text-sm text-ok bg-ok/10 border border-ok/30 px-4 py-3 rounded-xl">
                                 <CheckCircle className="w-4 h-4" />
                                 Message sent!
                             </div>
                         )}
                         {submitStatus === "error" && (
-                            <div className="flex items-center gap-2 text-sm text-red-700 bg-red-50 px-4 py-3 rounded-xl">
+                            <div className="flex items-center gap-2 text-sm text-red-300 bg-red-500/10 border border-red-500/30 px-4 py-3 rounded-xl">
                                 <AlertCircle className="w-4 h-4" />
                                 Failed to send. Please try again.
                             </div>
@@ -123,27 +124,25 @@ export default function Contact() {
 
                 {/* Right column */}
                 <div className="space-y-4">
-                    {/* Contact details */}
-                    <div className="bg-white rounded-2xl p-6 space-y-4" style={{ border: "1px solid #e0dfd8" }}>
-                        <h3 className="text-sm font-semibold text-[#1a1a18]">Contact details</h3>
+                    <div className="rounded-2xl border border-line bg-surface p-5 sm:p-6 space-y-4">
+                        <h3 className="font-mono text-xs text-accent">contact details</h3>
                         <a
                             href="mailto:zainab.yousaf161@gmail.com"
-                            className="flex items-center gap-3 text-sm text-[#5a5a52] hover:text-[#1a1a18] transition-colors"
+                            className="flex items-center gap-3 text-sm text-fg/90 hover:text-accent transition-colors break-all"
                         >
-                            <Mail className="w-4 h-4" />
+                            <Mail className="w-4 h-4 shrink-0" />
                             zainab.yousaf161@gmail.com
                         </a>
                     </div>
 
-                    {/* Social links */}
-                    <div className="bg-white rounded-2xl p-6" style={{ border: "1px solid #e0dfd8" }}>
-                        <h3 className="text-sm font-semibold text-[#1a1a18] mb-4">Connect</h3>
+                    <div className="rounded-2xl border border-line bg-surface p-5 sm:p-6">
+                        <h3 className="font-mono text-xs text-accent mb-4">connect</h3>
                         <div className="flex gap-3">
                             <a
                                 href="https://www.linkedin.com/in/zainabyousaf/"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex-1 text-center text-xs font-medium text-white bg-[#0077b5] px-4 py-2.5 rounded-xl hover:bg-[#006399] transition-colors"
+                                className="flex-1 text-center text-sm font-medium text-fg px-4 py-2.5 rounded-xl border border-line hover:border-accent/60 transition-colors"
                             >
                                 LinkedIn
                             </a>
@@ -151,12 +150,20 @@ export default function Contact() {
                                 href="https://github.com/zainab-yousaf"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex-1 text-center text-xs font-medium text-white bg-[#1a1a18] px-4 py-2.5 rounded-xl hover:bg-[#333330] transition-colors"
+                                className="flex-1 text-center text-sm font-medium text-fg px-4 py-2.5 rounded-xl border border-line hover:border-accent/60 transition-colors"
                             >
                                 GitHub
                             </a>
                         </div>
                     </div>
+
+                    <button
+                        onClick={openChat}
+                        className="w-full text-left rounded-2xl border border-accent/30 bg-accent/5 p-5 sm:p-6 hover:border-accent/60 transition-colors"
+                    >
+                        <p className="font-mono text-xs text-accent mb-1">✨ ask my AI</p>
+                        <p className="text-sm text-fg/85">Quick question about my work? Ask the AI assistant.</p>
+                    </button>
                 </div>
             </div>
         </section>

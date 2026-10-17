@@ -1,7 +1,9 @@
-"use client";
-
-import { useState } from "react";
+import CaseStudyToggle from "./CaseStudyToggle";
 import DreamDeskDiagram from "./DreamDeskDiagram";
+import SpotlightCard from "./ui/SpotlightCard";
+import SectionHeading from "./ui/SectionHeading";
+import FadeIn from "./ui/FadeIn";
+import { Tags } from "./ui/Tag";
 
 type Project = {
     title: string;
@@ -81,176 +83,140 @@ const projects: Project[] = [
 ];
 
 const dreamDeskResults = [
-    "Live across 3 hotels",
-    "~1.6s voice agent response time",
-    "POC delivered in 4 weeks",
-    "AI cost per response, latency and agent performance tracked in analytics",
+    { value: "3 hotels", label: "live in production" },
+    { value: "~1.6s", label: "voice agent response time" },
+    { value: "4 weeks", label: "to deliver the POC" },
 ];
 
-function Tags({ items }: { items: string[] }) {
+// Bento placement on desktop: DreamDesk is the big 2×2 tile; PDF Converter spans two columns.
+const span: Record<string, string> = {
+    "PDF Converter iOS / macOS": "md:col-span-2",
+};
+
+function Meta({ project }: { project: Project }) {
     return (
-        <div className="flex flex-wrap gap-1.5">
-            {items.map((skill) => (
-                <span
-                    key={skill}
-                    className="text-xs text-[#5a5a52] px-2.5 py-1 rounded-full"
-                    style={{ background: "#f4f4f0", border: "0.5px solid #e8e7e0" }}
-                >
-                    {skill}
-                </span>
-            ))}
+        <div className="space-y-1 font-mono text-[11px]">
+            <div className="flex gap-3">
+                <span className="text-subtle w-14 shrink-0">role</span>
+                <span className="text-fg/85">{project.role}</span>
+            </div>
+            <div className="flex gap-3">
+                <span className="text-subtle w-14 shrink-0">impact</span>
+                <span className="text-fg/85">{project.impact}</span>
+            </div>
         </div>
     );
 }
 
-function CaseStudy({ tech }: { tech: string[] }) {
+function Header({ project, big }: { project: Project; big?: boolean }) {
     return (
-        <div id="dreamdesk-case-study" className="space-y-6 pt-5 mt-2" style={{ borderTop: "0.5px solid #e0dfd8" }}>
-            <div className="grid md:grid-cols-2 gap-4">
-                <div className="rounded-xl p-5" style={{ background: "#f8f8f6", border: "0.5px solid #e8e7e0" }}>
-                    <h4 className="text-xs font-semibold uppercase tracking-wide text-[#8a8a82] mb-2">Problem</h4>
-                    <p className="text-sm text-[#3a3a32] leading-relaxed">
-                        Hotels handle guest messages across voice, WhatsApp, email and web chat, often with separate staff
-                        for each channel. Guests wait, answers are inconsistent, and reservation changes get lost between
-                        systems.
-                    </p>
-                </div>
-                <div className="rounded-xl p-5" style={{ background: "#f8f8f6", border: "0.5px solid #e8e7e0" }}>
-                    <h4 className="text-xs font-semibold uppercase tracking-wide text-[#8a8a82] mb-2">What I built</h4>
-                    <p className="text-sm text-[#3a3a32] leading-relaxed">
-                        Multi-channel AI agents that answer guests on every channel from one platform, look up live
-                        reservations, and escalate to staff when they&apos;re not confident.
-                    </p>
-                </div>
+        <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+                <p className="font-mono text-[11px] text-subtle mb-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
+                    {project.caseStudy && (
+                        <span className="text-[10px] font-semibold text-bg bg-accent px-2 py-0.5 rounded-full">current role</span>
+                    )}
+                    <span>
+                        {project.org} · {project.period}
+                    </span>
+                </p>
+                <h3 className={`font-display font-bold text-fg leading-snug ${big ? "text-2xl md:text-3xl" : "text-lg"}`}>
+                    {project.title}
+                </h3>
             </div>
-
-            <div>
-                <h4 className="text-xs font-semibold uppercase tracking-wide text-[#8a8a82] mb-3">How it works</h4>
-                <DreamDeskDiagram />
-            </div>
-
-            <div>
-                <h4 className="text-xs font-semibold uppercase tracking-wide text-[#8a8a82] mb-3">Results</h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {dreamDeskResults.map((r) => (
-                        <li
-                            key={r}
-                            className="flex gap-2 text-sm text-[#3a3a32] rounded-xl px-4 py-3"
-                            style={{ border: "0.5px solid #e0dfd8" }}
-                        >
-                            <span className="text-[#22a06b] shrink-0" aria-hidden="true">
-                                ✓
-                            </span>
-                            {r}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-
-            <div>
-                <h4 className="text-xs font-semibold uppercase tracking-wide text-[#8a8a82] mb-3">Tech</h4>
-                <Tags items={tech} />
-            </div>
+            {project.demo && (
+                <a
+                    href={project.demo.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 font-mono text-[11px] text-accent px-3 py-1.5 rounded-full border border-accent/40 hover:bg-accent/10 transition-colors"
+                >
+                    {project.demo.label}
+                </a>
+            )}
         </div>
+    );
+}
+
+function DreamDeskTile({ project }: { project: Project }) {
+    return (
+        <SpotlightCard lift={false} className="h-full p-5 sm:p-7 flex flex-col gap-5">
+            <Header project={project} big />
+            <p className="text-[15px] text-muted leading-relaxed">{project.description}</p>
+
+            <DreamDeskDiagram />
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
+                {dreamDeskResults.map((r) => (
+                    <div
+                        key={r.value}
+                        className="rounded-xl border border-line bg-surface-2 px-4 py-3 sm:p-4 flex items-baseline gap-3 sm:block"
+                    >
+                        <div className="font-display text-xl sm:text-2xl font-bold text-accent whitespace-nowrap">{r.value}</div>
+                        <div className="font-mono text-[11px] text-muted sm:mt-1 leading-snug">{r.label}</div>
+                    </div>
+                ))}
+            </div>
+
+            <Meta project={project} />
+
+            <CaseStudyToggle>
+                        <div className="grid md:grid-cols-2 gap-3">
+                            <div className="rounded-xl border border-line bg-surface-2 p-4">
+                                <h4 className="font-mono text-[11px] text-accent mb-2">problem</h4>
+                                <p className="text-sm text-fg/85 leading-relaxed">
+                                    Hotels handle guest messages across voice, WhatsApp, email and web chat, often with
+                                    separate staff for each channel. Guests wait, answers are inconsistent, and
+                                    reservation changes get lost between systems.
+                                </p>
+                            </div>
+                            <div className="rounded-xl border border-line bg-surface-2 p-4">
+                                <h4 className="font-mono text-[11px] text-accent mb-2">what I built</h4>
+                                <p className="text-sm text-fg/85 leading-relaxed">
+                                    Multi-channel AI agents that answer guests on every channel from one platform, look
+                                    up live reservations, and escalate to staff when they&apos;re not confident.
+                                </p>
+                            </div>
+                        </div>
+                        <p className="font-mono text-[11px] text-muted mt-3">
+                            ✓ AI cost per response, latency and agent performance tracked in analytics
+                        </p>
+            </CaseStudyToggle>
+
+            <div className="mt-auto pt-1">
+                <Tags items={project.skills} />
+            </div>
+        </SpotlightCard>
+    );
+}
+
+function ProjectTile({ project }: { project: Project }) {
+    return (
+        <SpotlightCard className="h-full p-5 sm:p-6 flex flex-col gap-4">
+            <Header project={project} />
+            <p className="text-sm text-muted leading-relaxed">{project.description}</p>
+            <Meta project={project} />
+            <div className="mt-auto pt-1">
+                <Tags items={project.skills} />
+            </div>
+        </SpotlightCard>
     );
 }
 
 export default function Projects() {
-    const [caseStudyOpen, setCaseStudyOpen] = useState(false);
-
     return (
-        <section id="projects" className="pt-16 pb-10">
-            <h2 className="text-xl font-semibold text-[#1a1a18] mb-6">Projects</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-                {projects.map((project) => {
-                    const expanded = project.caseStudy && caseStudyOpen;
-                    return (
-                        <div
-                            key={project.title}
-                            className={`bg-white rounded-2xl p-6 flex flex-col justify-between ${expanded ? "" : "lift"} ${
-                                project.caseStudy ? "md:col-span-2" : ""
-                            }`}
-                            style={{ border: "0.5px solid #e0dfd8" }}
-                        >
-                            <div className="space-y-3">
-                                <div className="flex items-start justify-between gap-3">
-                                    <div>
-                                        <p className="text-xs text-[#8a8a82] mb-1 flex flex-wrap items-center gap-x-2 gap-y-1">
-                                            {project.caseStudy && (
-                                                <span
-                                                    className="text-[11px] font-medium text-white bg-[#1a1a18] px-2 py-0.5 rounded-full"
-                                                >
-                                                    Current role
-                                                </span>
-                                            )}
-                                            <span>
-                                                {project.org} · {project.period}
-                                            </span>
-                                        </p>
-                                        <h3 className="text-base font-semibold text-[#1a1a18] leading-snug">{project.title}</h3>
-                                    </div>
-                                    <div className="flex gap-2 shrink-0">
-                                        {project.demo && (
-                                            <a
-                                                href={project.demo.href}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-xs text-[#5a5a52] px-3 py-1.5 rounded-full transition-colors"
-                                                style={{ border: "0.5px solid #d3d1c7" }}
-                                            >
-                                                {project.demo.label}
-                                            </a>
-                                        )}
-                                        {project.github && (
-                                            <a
-                                                href={project.github}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-xs text-[#5a5a52] px-3 py-1.5 rounded-full transition-colors"
-                                                style={{ border: "0.5px solid #d3d1c7" }}
-                                            >
-                                                GitHub ↗
-                                            </a>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <p className="text-sm text-[#5a5a52] leading-relaxed">{project.description}</p>
-
-                                <div className="space-y-1 pt-1">
-                                    <div className="flex gap-2 text-xs">
-                                        <span className="text-[#8a8a82] w-16 shrink-0">Role</span>
-                                        <span className="text-[#3a3a32]">{project.role}</span>
-                                    </div>
-                                    <div className="flex gap-2 text-xs">
-                                        <span className="text-[#8a8a82] w-16 shrink-0">Impact</span>
-                                        <span className="text-[#3a3a32]">{project.impact}</span>
-                                    </div>
-                                </div>
-
-                                {project.caseStudy && (
-                                    <button
-                                        type="button"
-                                        onClick={() => setCaseStudyOpen((o) => !o)}
-                                        aria-expanded={caseStudyOpen}
-                                        aria-controls="dreamdesk-case-study"
-                                        className="text-xs font-medium text-white bg-[#1a1a18] px-4 py-2 rounded-full hover:bg-[#333330] transition-colors"
-                                    >
-                                        {caseStudyOpen ? "Hide case study ↑" : "Read case study ↓"}
-                                    </button>
-                                )}
-
-                                {expanded && <CaseStudy tech={project.skills} />}
-                            </div>
-
-                            {!expanded && (
-                                <div className="mt-4 pt-2">
-                                    <Tags items={project.skills} />
-                                </div>
-                            )}
-                        </div>
-                    );
-                })}
+        <section id="projects" className="defer-render max-w-[1100px] mx-auto px-4 sm:px-6 pt-24">
+            <SectionHeading eyebrow="// projects" title="Selected work" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {projects.map((project, i) => (
+                    <FadeIn
+                        key={project.title}
+                        delay={Math.min(i, 3) * 0.06}
+                        className={project.caseStudy ? "md:col-span-2 md:row-span-2" : span[project.title] ?? ""}
+                    >
+                        {project.caseStudy ? <DreamDeskTile project={project} /> : <ProjectTile project={project} />}
+                    </FadeIn>
+                ))}
             </div>
         </section>
     );

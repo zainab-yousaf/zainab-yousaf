@@ -1,4 +1,7 @@
-"use client";
+import SectionHeading from "./ui/SectionHeading";
+import SpotlightCard from "./ui/SpotlightCard";
+import FadeIn from "./ui/FadeIn";
+import { Tags } from "./ui/Tag";
 
 const skills: Record<string, string[]> = {
     "AI & Agents": [
@@ -38,30 +41,38 @@ const skills: Record<string, string[]> = {
     ],
 };
 
+// Headline tools for the marquee (all from the groups below).
+const MARQUEE = [
+    "Pydantic AI", "LangGraph", "RAG", "MCP", "VAPI", "Retell", "Python", "FastAPI", "Next.js",
+    "TypeScript", "PostgreSQL", "Pinecone", "GCP Cloud Run", "Logfire", "Swift",
+];
+
 export default function Skills() {
     return (
-        <section id="skills" className="py-10">
-            <h2 className="text-xl font-semibold text-[#1a1a18] mb-6">Skills & Technologies</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-                {Object.entries(skills).map(([category, items]) => (
-                    <div
-                        key={category}
-                        className="lift bg-white rounded-2xl p-6"
-                        style={{ border: "1px solid #e0dfd8" }}
-                    >
-                        <h3 className="text-sm font-semibold text-[#1a1a18] mb-3">{category}</h3>
-                        <div className="flex flex-wrap gap-2">
-                            {items.map((skill) => (
-                                <span
-                                    key={skill}
-                                    className="text-xs text-[#5a5a52] px-2.5 py-1 rounded-full"
-                                    style={{ background: "#f4f4f0", border: "0.5px solid #e8e7e0" }}
-                                >
-                                    {skill}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
+        <section id="skills" className="defer-render max-w-[1100px] mx-auto px-4 sm:px-6 pt-24">
+            <SectionHeading eyebrow="// skills" title="Tools I build with" />
+
+            <div className="marquee-mask overflow-hidden mb-8" aria-hidden="true">
+                <div className="marquee-track flex w-max gap-3">
+                    {[...MARQUEE, ...MARQUEE].map((t, i) => (
+                        <span
+                            key={i}
+                            className="font-mono text-sm text-fg/80 px-4 py-2 rounded-full border border-line bg-surface whitespace-nowrap"
+                        >
+                            {t}
+                        </span>
+                    ))}
+                </div>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                {Object.entries(skills).map(([category, items], i) => (
+                    <FadeIn key={category} delay={(i % 4) * 0.05} className="h-full">
+                        <SpotlightCard className="h-full p-5">
+                            <h3 className="font-mono text-xs text-accent mb-3">{category}</h3>
+                            <Tags items={items} />
+                        </SpotlightCard>
+                    </FadeIn>
                 ))}
             </div>
         </section>

@@ -1,4 +1,8 @@
-import Reveal from "./Reveal";
+import TimelineRail from "./ui/TimelineRail";
+import FadeIn from "./ui/FadeIn";
+import SpotlightCard from "./ui/SpotlightCard";
+import SectionHeading from "./ui/SectionHeading";
+import { Tags } from "./ui/Tag";
 
 type SubRole = {
     title: string;
@@ -121,9 +125,9 @@ function Bullets({ items }: { items: string[] }) {
     return (
         <ul className="space-y-1.5">
             {items.map((b) => (
-                <li key={b} className="flex gap-2 text-sm text-[#5a5a52] leading-relaxed">
-                    <span className="text-[#c0bfb7] shrink-0" aria-hidden="true">
-                        –
+                <li key={b} className="flex gap-2.5 text-sm text-muted leading-relaxed">
+                    <span className="text-accent/70 shrink-0 font-mono" aria-hidden="true">
+                        ›
                     </span>
                     <span>{b}</span>
                 </li>
@@ -134,73 +138,58 @@ function Bullets({ items }: { items: string[] }) {
 
 export default function Experience() {
     return (
-        <section id="experience" className="pt-16 pb-4 scroll-mt-16">
-            <h2 className="text-xl font-semibold text-[#1a1a18] mb-6">Experience</h2>
+        <section id="experience" className="defer-render max-w-[1100px] mx-auto px-4 sm:px-6 pt-24">
+            <SectionHeading eyebrow="// experience" title="Where I've worked" />
             <div className="relative">
-                {/* Timeline rail */}
-                <span
-                    className="absolute left-[7px] top-2 bottom-2 w-px"
-                    style={{ background: "#e0dfd8" }}
-                    aria-hidden="true"
-                />
-                <ol className="space-y-4">
-                {experience.map((job, idx) => (
-                    <li key={job.title} className="relative pl-8">
-                        <span
-                            className="absolute left-0 top-6 w-[15px] h-[15px] rounded-full"
-                            style={{
-                                background: idx === 0 ? "#1a1a18" : "#ffffff",
-                                border: "2px solid #1a1a18",
-                            }}
-                            aria-hidden="true"
-                        />
-                        <Reveal>
-                        <div className="lift bg-white rounded-2xl p-6 space-y-3" style={{ border: "0.5px solid #e0dfd8" }}>
-                            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 md:gap-4">
-                                <div>
-                                    <h3 className="text-base font-semibold text-[#1a1a18] leading-snug">{job.title}</h3>
-                                    <p className="text-sm text-[#3a3a32] mt-0.5">
-                                        {[job.company, job.location].filter(Boolean).join(" · ")}
-                                    </p>
+                <TimelineRail />
+                <ol className="space-y-5">
+                    {experience.map((job, idx) => (
+                        <li key={job.title} className="relative pl-8 sm:pl-10">
+                            <span
+                                className={`absolute left-0 top-6 w-[15px] h-[15px] rounded-full border-2 border-accent ${
+                                    idx === 0 ? "bg-accent shadow-[0_0_12px_var(--color-accent)]" : "bg-bg"
+                                }`}
+                                aria-hidden="true"
+                            />
+                            <FadeIn fromRight>
+                            <SpotlightCard lift={false} className="p-5 sm:p-6 space-y-3">
+                                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 md:gap-4">
+                                    <div>
+                                        <h3 className="font-display text-lg font-bold text-fg leading-snug">{job.title}</h3>
+                                        <p className="text-sm text-fg/80 mt-0.5">
+                                            {[job.company, job.location].filter(Boolean).join(" · ")}
+                                        </p>
+                                    </div>
+                                    <p className="font-mono text-xs text-accent md:pt-1 shrink-0">{job.period}</p>
                                 </div>
-                                <p className="text-xs text-[#8a8a82] md:pt-1 shrink-0">{job.period}</p>
-                            </div>
 
-                            {job.summary && <p className="text-sm text-[#3a3a32] italic">{job.summary}</p>}
-                            {job.bullets && <Bullets items={job.bullets} />}
-                            {job.note && <p className="text-xs text-[#8a8a82] leading-relaxed">{job.note}</p>}
+                                {job.summary && <p className="text-sm text-fg/80 italic">{job.summary}</p>}
+                                {job.bullets && <Bullets items={job.bullets} />}
+                                {job.note && <p className="text-xs text-subtle leading-relaxed">{job.note}</p>}
 
-                            {job.subRoles && (
-                                <div className="space-y-3 pt-1">
-                                    {job.subRoles.map((sub) => (
-                                        <div key={sub.title} className="pl-4" style={{ borderLeft: "2px solid #e0dfd8" }}>
-                                            <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-0.5 md:gap-4 mb-1">
-                                                <p className="text-sm font-medium text-[#1a1a18]">{sub.title}</p>
-                                                {sub.meta && <p className="text-xs text-[#8a8a82] shrink-0">{sub.meta}</p>}
+                                {job.subRoles && (
+                                    <div className="space-y-3 pt-1">
+                                        {job.subRoles.map((sub) => (
+                                            <div key={sub.title} className="pl-4 border-l-2 border-line">
+                                                <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-0.5 md:gap-4 mb-1">
+                                                    <p className="text-sm font-medium text-fg">{sub.title}</p>
+                                                    {sub.meta && <p className="font-mono text-xs text-subtle shrink-0">{sub.meta}</p>}
+                                                </div>
+                                                <Bullets items={sub.bullets} />
                                             </div>
-                                            <Bullets items={sub.bullets} />
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
+                                        ))}
+                                    </div>
+                                )}
 
-                            {job.tech && (
-                                <div className="flex flex-wrap gap-1.5 pt-2">
-                                    {job.tech.map((t) => (
-                                        <span
-                                            key={t}
-                                            className="text-xs text-[#5a5a52] px-2.5 py-1 rounded-full"
-                                            style={{ background: "#f4f4f0", border: "0.5px solid #e8e7e0" }}
-                                        >
-                                            {t}
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                        </Reveal>
-                    </li>
-                ))}
+                                {job.tech && (
+                                    <div className="pt-2">
+                                        <Tags items={job.tech} />
+                                    </div>
+                                )}
+                            </SpotlightCard>
+                            </FadeIn>
+                        </li>
+                    ))}
                 </ol>
             </div>
         </section>

@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+
+const body = Geist({ variable: "--font-body", subsets: ["latin"] });
+const code = Geist_Mono({ variable: "--font-code", subsets: ["latin"], preload: false });
+const heading = Space_Grotesk({ variable: "--font-heading", subsets: ["latin"], weight: ["700"], preload: false });
 
 const title = "Zainab Yousaf – Founding AI Engineer | AI Agents · Voice AI · RAG";
 const description =
@@ -63,7 +68,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" className={`${body.variable} ${code.variable} ${heading.variable}`}>
             <body className="antialiased">
                 <GoogleAnalytics />
                 {children}
