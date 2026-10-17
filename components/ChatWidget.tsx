@@ -91,7 +91,7 @@ export default function ChatWidget() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ messages: next.slice(-10) }),
             });
-            const data = (await res.json().catch(() => ({}))) as { reply?: string };
+            const data = (await res.json().catch(() => ({}))) as { reply?: string; detail?: string };
             setMessages((m) => [
                 ...m,
                 {
@@ -99,7 +99,10 @@ export default function ChatWidget() {
                     content:
                         res.ok && data.reply
                             ? data.reply
-                            : `Sorry, I can't answer right now. You can email Zainab directly at ${EMAIL}.`,
+                            : `Sorry, I can't answer right now. You can email Zainab directly at ${EMAIL}.` +
+                              (data.detail ? `
+
+[Dev only] ${data.detail}` : ""),
                 },
             ]);
         } catch {

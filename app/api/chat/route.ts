@@ -22,6 +22,17 @@ ${ABOUT_ME}`;
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
 
+// In local development, errors include Gemini's own message so setup problems are visible in the chat.
+const isDev = process.env.NODE_ENV !== "production";
+
+function geminiMessage(body: string): string {
+    try {
+        return (JSON.parse(body) as { error?: { message?: string } }).error?.message || body.slice(0, 300);
+    } catch {
+        return body.slice(0, 300);
+    }
+}
+
 function parseMessages(body: unknown): ChatMessage[] | null {
     if (!body || typeof body !== "object" || !Array.isArray((body as { messages?: unknown }).messages)) return null;
     const raw = (body as { messages: unknown[] }).messages;
@@ -45,9 +56,12 @@ function parseMessages(body: unknown): ChatMessage[] | null {
 export async function POST(req: Request) {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-        return Response.json({ error: "The chat isn't configured yet." }, { status: 503 });
+        return Response.json(
+            { error: "The chat isn't configured yet.", ...(isDev && { detail: "GEMINI_API_KEY is not set." }) },
+            { status: 503 }
+        );
     }
-    const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+    const model = process.env.GEMINI_MODEL || "gemini-3.8-flash";
 
     let body: unknown;
     try {
@@ -79,15 +93,21 @@ export async function POST(req: Request) {
         );
 
         if (!res.ok) {
-            console.error("Gemini error", res.status, await res.text().catch(() => ""));
-            return Response.json({ error: "The AI is unavailable right now." }, { status: 502 });
+            const detail = await res.text().catch(() => "");
+            console.error("Gemini error", res.status, detail);
+            return Response.json(
+                { error: "The AI is unavailable right now.", ...(isDev && { detail: geminiMessage(detail) }) },
+                { status: 502 }
+            );
         }
 
         const data = (await res.json()) as {
-            candidates?: { content?: { parts?: { text?: string }[] } }[];
+            candidates?: { content?: { parts?: { text?: string; thought?: boolean }[] } }[];
         };
+        // Skip "thought" parts so the model's internal reasoning never reaches visitors.
         const reply = data.candidates?.[0]?.content?.parts
-            ?.map((p) => p.text ?? "")
+            ?.filter((p) => !p.thought)
+            .map((p) => p.text ?? "")
             .join("")
             .trim();
 
