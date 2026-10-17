@@ -10,7 +10,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="about" className="py-10">
+    <section id="about" className="pt-10 pb-3">
       <div
         className="bg-white rounded-2xl p-8 space-y-6"
         style={{ border: "1px solid #e0dfd8" }}
@@ -29,21 +29,36 @@ export default function Hero() {
               Zainab Yousaf
             </h1>
             <p className="text-sm text-[#8a8a82] mt-0.5">
-              AI Engineer · Multi-Agent Systems · RAG · DFKI Germany Research
+              Founding AI Engineer · AI Agents · Voice AI · RAG · AI Automation
             </p>
           </div>
         </div>
 
-        <p className="text-sm text-[#5a5a52] leading-relaxed max-w-2xl">
-          I build production AI systems that work under real load, not just
-          demos. My flagship project, DreamDesk, is a multi-agent platform that
-          autonomously handles 100% of hotel guest communications across email,
-          chat, and WhatsApp with zero dedicated support staff. Before that, I
-          engineered an OpenAI-powered pipeline at AutoMato AI serving 50+
-          companies, shipped 2 native apps to the App Store, and collaborated
-          with DFKI Germany on smart contract security research. I specialize in
-          multi-agent LLM pipelines, RAG architectures, and end-to-end product
-          delivery.
+        <div className="space-y-3 max-w-2xl">
+          <p className="text-sm text-[#5a5a52] leading-relaxed">
+            I build AI agents that handle real customer communication in
+            production. I take ownership from unclear requirements to a working
+            product, and I&apos;m comfortable working independently across time
+            zones.
+          </p>
+          <p className="text-sm text-[#5a5a52] leading-relaxed">
+            At DreamDesk AI, I build multi-channel AI agents across voice calls,
+            WhatsApp, email and web chat, now live across 3 hotels. Before that,
+            I built a GenAI pipeline at AutoMato AI serving 50+ companies,
+            shipped PDF Converter (live on the App Store, 5.0 rating) and BGZoom
+            for macOS at KATco, and collaborated with DFKI Germany on smart
+            contract security research.
+          </p>
+        </div>
+
+        <p className="flex items-center gap-2 text-xs text-[#3a3a32]">
+          <span
+            className="inline-block w-2 h-2 rounded-full shrink-0"
+            style={{ background: "#22a06b" }}
+            aria-hidden="true"
+          />
+          Open to remote roles (full-time, part-time or contract) with UK and
+          US overlap.
         </p>
 
         <div className="flex gap-3 flex-wrap">

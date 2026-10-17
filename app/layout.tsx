@@ -1,36 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
+const title = "Zainab Yousaf – Founding AI Engineer | AI Agents · Voice AI · RAG";
+const description =
+    "Founding AI Engineer at DreamDesk AI (UK, remote). I build production AI agents, voice AI and automation: multi-channel agents live across 3 hotels, voice agents at ~1.6s response time.";
 
 export const metadata: Metadata = {
-    title: "Zainab Yousaf - Full-Stack Software Engineer Portfolio",
-    description:
-        "Portfolio of Zainab Yousaf, Full-Stack Software Engineer specializing in React, NestJS, Swift, and AI-powered applications. Building scalable, innovative solutions with proven impact - 30% performance improvements, 45% visibility increases.",
+    title,
+    description,
     keywords: [
         "Zainab Yousaf",
-        "Full-Stack Developer",
-        "Software Engineer",
-        "React",
-        "NestJS",
-        "Swift",
-        "AI",
+        "Founding AI Engineer",
+        "AI Engineer",
+        "AI Agents",
+        "Voice AI",
+        "RAG",
+        "AI Automation",
+        "Pydantic AI",
+        "MCP",
+        "Python",
+        "FastAPI",
+        "Next.js",
         "Portfolio",
-        "Web Developer",
-        "Mobile Developer",
-        "iOS Developer",
-        "TypeScript",
-        "Node.js",
     ],
     authors: [{ name: "Zainab Yousaf" }],
     creator: "Zainab Yousaf",
@@ -47,9 +39,8 @@ export const metadata: Metadata = {
         },
     },
     openGraph: {
-        title: "Zainab Yousaf - Full-Stack Software Engineer",
-        description:
-            "Full-Stack Software Engineer specializing in AI-powered applications and scalable solutions. Proven track record of 30% performance improvements and 45% visibility increases.",
+        title,
+        description,
         url: "https://zainab-yousaf.vercel.app",
         siteName: "Zainab Yousaf Portfolio",
         type: "website",
@@ -57,9 +48,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Zainab Yousaf - Full-Stack Software Engineer",
-        description:
-            "Full-Stack Software Engineer specializing in AI-powered applications and scalable solutions.",
+        title,
+        description,
     },
     alternates: {
         canonical: "https://zainab-yousaf.vercel.app",
@@ -73,9 +63,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-            >
+            <body className="antialiased">
                 <GoogleAnalytics />
                 {children}
             </body>

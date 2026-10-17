@@ -43,7 +43,7 @@ export default function Contact() {
         <section id="contact" className="pt-16 pb-10">
             <h2 className="text-xl font-semibold text-[#1a1a18] mb-2">Get in touch</h2>
             <p className="text-sm text-[#8a8a82] mb-8">
-                Open to remote AI Engineer and Full-Stack AI roles globally. Feel free to reach out.
+                Open to remote AI Engineer and AI Automation roles (full-time, part-time or contract) with UK and US overlap.
             </p>
 
             <div className="grid md:grid-cols-2 gap-4">

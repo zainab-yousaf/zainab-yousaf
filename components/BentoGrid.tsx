@@ -11,16 +11,16 @@ export default function BentoGrid() {
         >
           <div className="space-y-3">
             <p className="text-xs text-[#9a9a92]">
-              Flagship project · Jan 2026 – Present
+              DreamDesk AI · UK (Remote) · Jan 2026 – Present
             </p>
             <h3 className="text-xl font-semibold text-white">
               DreamDesk: Hotel AI Agent Platform
             </h3>
             <p className="text-sm text-[#c0c0b8] leading-relaxed">
-              Autonomous hotel guest communications platform. A 4-layer
-              multi-agent graph handles bookings, FAQs, and service requests
-              across email, chat, voice, and WhatsApp with zero human
-              intervention required.
+              Multi-channel AI agents that answer guests on every channel from
+              one platform, look up live reservations, and escalate to staff
+              when they&apos;re not confident. Live across 3 hotels on voice
+              calls, WhatsApp, email and web chat.
             </p>
             <div className="flex flex-wrap gap-2 pt-1">
               {[
@@ -28,7 +28,8 @@ export default function BentoGrid() {
                 "RAG",
                 "Pinecone",
                 "MCP",
-                "Gemini 2.5",
+                "VAPI",
+                "Retell",
                 "Next.js",
                 "Logfire",
               ].map((t) => (
@@ -50,8 +51,8 @@ export default function BentoGrid() {
             style={{ borderTop: "0.5px solid rgba(255,255,255,0.1)" }}
           >
             {[
-              { v: "4-layer", l: "Agent graph" },
-              { v: "4-channel", l: "Email · Chat · Voice · WhatsApp" },
+              { v: "4-stage", l: "Agent graph" },
+              { v: "4-channel", l: "Voice calls · WhatsApp · Email · Web chat" },
             ].map(({ v, l }) => (
               <div key={l}>
                 <div className="text-lg font-bold text-white">{v}</div>
@@ -74,9 +75,9 @@ export default function BentoGrid() {
               Smart contract security
             </h3>
             <p className="text-sm text-[#5a5a52] leading-relaxed">
-              Information Flow Guided Grey-Box Fuzzing for smart contract
-              vulnerability detection. Improved detection accuracy with 25%
-              resource reduction.
+              Information Flow Guided Grey-Box Fuzzing for smart contracts.
+              Improves vulnerability detection while cutting resource usage by
+              25%.
             </p>
             <div className="flex flex-wrap gap-2 pt-1">
               {["Solidity", "Fuzzing", "Python", "Slither"].map((t) => (
@@ -136,11 +137,12 @@ export default function BentoGrid() {
               Open to remote roles
             </h3>
             <p className="text-sm text-[#5a5a52] leading-relaxed">
-              Seeking AI Engineer and Full-Stack AI positions globally.
+              Open to remote roles (full-time, part-time or contract) with UK
+              and US overlap.
             </p>
           </div>
           <div className="flex flex-wrap gap-2 mt-4">
-            {["AI Engineer", "Remote", "Full-Stack AI"].map((t) => (
+            {["AI Engineer", "AI Automation", "Remote"].map((t) => (
               <span
                 key={t}
                 className="inline-block text-xs px-2.5 py-1 rounded-full text-[#5a5a52]"

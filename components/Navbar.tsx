@@ -17,7 +17,7 @@ export default function Navbar() {
 
                 {/* Desktop nav */}
                 <div className="hidden md:flex items-center gap-6">
-                    {["About", "Projects", "Skills", "Contact"].map((label) => (
+                    {["About", "Experience", "Projects", "Skills", "Contact"].map((label) => (
                         <button
                             key={label}
                             onClick={() => scroll(label.toLowerCase())}
@@ -31,7 +31,7 @@ export default function Navbar() {
                 {/* Desktop right buttons */}
                 <div className="hidden md:flex items-center gap-2">
                     <a
-                        href="https://raw.githubusercontent.com/zainab-yousaf/zainabyousaf/main/zainabyousaf.pdf"
+                        href="/Zainab_Yousaf_Resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm font-medium text-[#1a1a18] px-4 py-2 rounded-full hover:bg-[#f0efe8] transition-colors"
@@ -62,7 +62,7 @@ export default function Navbar() {
             {/* Mobile menu dropdown */}
             {menuOpen && (
                 <div className="md:hidden bg-white px-6 pb-5 flex flex-col gap-4" style={{ borderTop: "0.5px solid #e0dfd8" }}>
-                    {["About", "Projects", "Skills", "Contact"].map((label) => (
+                    {["About", "Experience", "Projects", "Skills", "Contact"].map((label) => (
                         <button
                             key={label}
                             onClick={() => scroll(label.toLowerCase())}
@@ -73,7 +73,7 @@ export default function Navbar() {
                     ))}
                     <div className="flex gap-2 pt-2" style={{ borderTop: "0.5px solid #e0dfd8" }}>
                         <a
-                            href="https://raw.githubusercontent.com/zainab-yousaf/zainabyousaf/main/zainabyousaf.pdf"
+                            href="/Zainab_Yousaf_Resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 text-center text-sm font-medium text-[#1a1a18] px-4 py-2 rounded-full hover:bg-[#f0efe8] transition-colors"
