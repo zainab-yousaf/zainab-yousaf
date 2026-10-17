@@ -7,6 +7,7 @@ const description =
     "Founding AI Engineer at DreamDesk AI (UK, remote). I build production AI agents, voice AI and automation: multi-channel agents live across 3 hotels, voice agents at ~1.6s response time.";
 
 export const metadata: Metadata = {
+    metadataBase: new URL("https://zainab-yousaf.vercel.app"),
     title,
     description,
     keywords: [

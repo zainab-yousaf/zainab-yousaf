@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { OPEN_CHAT_EVENT } from "./ChatWidget";
 
 export default function Hero() {
   const scroll = (id: string) => {
@@ -65,6 +66,13 @@ export default function Hero() {
             </span>
             Open to all remote roles: full-time, part-time or contract.
           </p>
+
+          <button
+            onClick={() => window.dispatchEvent(new Event(OPEN_CHAT_EVENT))}
+            className="block text-sm font-medium text-[#1a1a18] underline-offset-4 decoration-[#c0bfb7] hover:underline"
+          >
+            Don&apos;t want to read? Ask my AI →
+          </button>
 
           <div className="flex gap-3 flex-wrap">
             <button

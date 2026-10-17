@@ -21,7 +21,7 @@ const projects: Project[] = [
         title: "DreamDesk: Hotel AI Agent Platform",
         period: "Jan 2026 – Present",
         org: "DreamDesk AI · UK (Remote)",
-        role: "Founding Engineer",
+        role: "Founding Engineer (Full-Stack AI)",
         description:
             "Multi-channel AI agents that answer guests on every channel from one platform, look up live reservations, and escalate to staff when they're not confident. Works across voice calls, WhatsApp, email and web chat.",
         impact: "Live across 3 hotels, ~1.6s voice agent response time",
@@ -168,15 +168,24 @@ export default function Projects() {
                         <div
                             key={project.title}
                             className={`bg-white rounded-2xl p-6 flex flex-col justify-between ${expanded ? "" : "lift"} ${
-                                expanded ? "md:col-span-2" : ""
+                                project.caseStudy ? "md:col-span-2" : ""
                             }`}
                             style={{ border: "0.5px solid #e0dfd8" }}
                         >
                             <div className="space-y-3">
                                 <div className="flex items-start justify-between gap-3">
                                     <div>
-                                        <p className="text-xs text-[#8a8a82] mb-1">
-                                            {project.org} · {project.period}
+                                        <p className="text-xs text-[#8a8a82] mb-1 flex flex-wrap items-center gap-x-2 gap-y-1">
+                                            {project.caseStudy && (
+                                                <span
+                                                    className="text-[11px] font-medium text-white bg-[#1a1a18] px-2 py-0.5 rounded-full"
+                                                >
+                                                    Current role
+                                                </span>
+                                            )}
+                                            <span>
+                                                {project.org} · {project.period}
+                                            </span>
                                         </p>
                                         <h3 className="text-base font-semibold text-[#1a1a18] leading-snug">{project.title}</h3>
                                     </div>

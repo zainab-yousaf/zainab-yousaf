@@ -4,64 +4,6 @@ export default function BentoGrid() {
   return (
     <section className="py-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        {/* Card 1 — DreamDesk (spans 2 cols) */}
-        <div
-          className="lift col-span-1 md:col-span-2 rounded-2xl p-7 flex flex-col justify-between min-h-[280px]"
-          style={{ background: "#1a1a18" }}
-        >
-          <div className="space-y-3">
-            <p className="text-xs text-[#9a9a92]">
-              DreamDesk AI · UK (Remote) · Jan 2026 – Present
-            </p>
-            <h3 className="text-xl font-semibold text-white">
-              DreamDesk: Hotel AI Agent Platform
-            </h3>
-            <p className="text-sm text-[#c0c0b8] leading-relaxed">
-              Multi-channel AI agents that answer guests on every channel from
-              one platform, look up live reservations, and escalate to staff
-              when they&apos;re not confident. Live across 3 hotels on voice
-              calls, WhatsApp, email and web chat.
-            </p>
-            <div className="flex flex-wrap gap-2 pt-1">
-              {[
-                "Pydantic AI",
-                "RAG",
-                "Pinecone",
-                "MCP",
-                "VAPI",
-                "Retell",
-                "Next.js",
-                "Logfire",
-              ].map((t) => (
-                <span
-                  key={t}
-                  className="inline-block text-xs px-2.5 py-1 rounded-full"
-                  style={{
-                    background: "rgba(255,255,255,0.1)",
-                    color: "#e5e5e3",
-                  }}
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div
-            className="grid grid-cols-2 gap-3 mt-6 pt-6"
-            style={{ borderTop: "0.5px solid rgba(255,255,255,0.1)" }}
-          >
-            {[
-              { v: "4-stage", l: "Agent graph" },
-              { v: "4-channel", l: "Voice calls · WhatsApp · Email · Web chat" },
-            ].map(({ v, l }) => (
-              <div key={l}>
-                <div className="text-lg font-bold text-white">{v}</div>
-                <div className="text-xs text-[#9a9a92]">{l}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Card 2 — DFKI Research */}
         <div
           className="lift rounded-2xl p-6 flex flex-col justify-between bg-white"
@@ -126,9 +68,9 @@ export default function BentoGrid() {
           </div>
         </div>
 
-        {/* Card 4 — Availability */}
+        {/* Card 4 — Availability (full-width strip) */}
         <div
-          className="lift rounded-2xl p-6 flex flex-col justify-between bg-white"
+          className="lift md:col-span-3 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white"
           style={{ border: "0.5px solid #e0dfd8" }}
         >
           <div className="space-y-3">
@@ -140,7 +82,7 @@ export default function BentoGrid() {
               Open to all remote roles: full-time, part-time or contract.
             </p>
           </div>
-          <div className="flex flex-wrap gap-2 mt-4">
+          <div className="flex flex-wrap gap-2">
             {["AI Engineer", "AI Automation", "Remote", "Part-time"].map((t) => (
               <span
                 key={t}

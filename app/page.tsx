@@ -7,6 +7,7 @@ import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import Contact from "../components/ContactInfo";
 import Reveal from "../components/Reveal";
+import ChatWidget from "../components/ChatWidget";
 
 export default function Home() {
     return (
@@ -44,6 +45,7 @@ export default function Home() {
                     © {new Date().getFullYear()} Zainab Yousaf
                 </footer>
             </main>
+            <ChatWidget />
         </div>
     );
 }
