@@ -1,26 +1,23 @@
 import Image from "next/image";
-import { Download, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, FileText, Github, Linkedin, Mail } from "lucide-react";
 import DreamDeskDiagram from "../DreamDeskDiagram";
-import CountUp from "./CountUp";
-import { contact, dreamDeskResults, experience, projects, skills, type Project } from "@/lib/content";
+import { contact, dreamDeskResults, projects } from "@/lib/content";
 
-// Bento tile previews (the first-screen overview). Full content lives in components/sections.tsx.
+// First-screen tiles. Full content lives in the sections below (components/sections.tsx).
 
 const dreamdesk = projects.find((p) => p.caseStudy)!;
-const otherProjects = projects.filter((p) => !p.caseStudy);
-const shortTitle = (p: Project) => p.title.split(":")[0];
 
 export function Eyebrow({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-    return <p className={`font-mono text-[11px] uppercase tracking-[0.08em] text-accent-ink ${className}`}>{children}</p>;
+    return <p className={`font-mono text-xs uppercase tracking-[0.08em] text-accent-ink ${className}`}>{children}</p>;
 }
 
-/* ---------- Intro ---------- */
+/* ---------- Intro (the focal point) ---------- */
 
-export function IntroPreview() {
+export function IntroTile() {
     return (
-        <div className="h-full p-6 sm:p-8 short:p-5 flex flex-col justify-between gap-6 short:gap-4">
+        <div className="h-full p-7 sm:p-10 lg:p-12 short:p-8 flex flex-col justify-center gap-7 short:gap-5">
             <div>
-                <span className="inline-flex items-center gap-2 font-mono text-[11px] text-fg/85 px-3 py-1.5 rounded-full border border-line bg-bg">
+                <span className="inline-flex items-center gap-2 font-mono text-xs text-fg px-3 py-1.5 rounded-full border border-line bg-bg">
                     <span className="relative flex w-2 h-2" aria-hidden="true">
                         <span className="absolute inline-flex h-full w-full rounded-full bg-ok opacity-60 animate-ping" />
                         <span className="relative inline-flex w-2 h-2 rounded-full bg-ok" />
@@ -28,190 +25,106 @@ export function IntroPreview() {
                     Available for remote roles
                 </span>
             </div>
-            <div className="flex items-end gap-4 sm:gap-6">
+
+            <div className="flex items-center gap-5 sm:gap-7">
                 <Image
                     src="/profileImage.jpg"
                     alt="Zainab Yousaf"
-                    width={96}
-                    height={96}
+                    width={128}
+                    height={128}
                     priority
-                    className="w-16 h-16 sm:w-24 sm:h-24 short:w-20 short:h-20 rounded-2xl object-cover border border-line shrink-0"
+                    className="w-20 h-20 sm:w-28 sm:h-28 short:w-24 short:h-24 rounded-3xl object-cover border border-line shrink-0"
                 />
                 <div className="min-w-0">
-                    <h1 className="font-display text-[44px] sm:text-6xl xl:text-7xl short:text-6xl leading-[0.92] tracking-tight text-fg">
+                    <h1 className="font-display text-5xl sm:text-7xl xl:text-8xl short:text-7xl leading-[0.9] tracking-tight text-fg">
                         Zainab <em className="text-accent-ink">Yousaf</em>
                     </h1>
-                    <p className="font-mono text-[12px] sm:text-[13px] text-muted mt-3">AI Engineer · Multi-Agent Systems · RAG</p>
+                    <p className="font-mono text-[13px] sm:text-sm text-muted mt-3">AI Engineer · Multi-Agent Systems · RAG</p>
                 </div>
             </div>
-            <p className="text-sm text-muted leading-relaxed max-w-lg short:hidden">
-                Founding AI Engineer at DreamDesk AI (UK, remote). I build AI agents that handle real customer
-                communication in production.
-            </p>
+
+            <div className="space-y-3 max-w-xl">
+                <p className="text-lg sm:text-xl text-fg/90 leading-relaxed">
+                    I build production AI agents that handle real customer conversations — currently founding engineer at
+                    DreamDesk.
+                </p>
+                <p className="font-mono text-[13px] text-subtle">50+ companies served · 2 native apps shipped · 2+ years in production</p>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+                <a
+                    href={contact.cv}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-base font-semibold text-fg bg-accent px-6 py-3 rounded-full transition-[box-shadow,transform] hover:-translate-y-px hover:shadow-[0_12px_28px_-14px_var(--color-accent)]"
+                >
+                    <FileText className="w-4 h-4" aria-hidden="true" />
+                    View resume
+                </a>
+                <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 text-base font-semibold text-fg px-6 py-3 rounded-full border border-line bg-surface hover:border-accent transition-colors"
+                >
+                    Contact me
+                </a>
+            </div>
         </div>
     );
 }
 
 /* ---------- DreamDesk ---------- */
 
-export function DreamDeskPreview() {
+export function DreamDeskTile() {
     return (
-        <div className="h-full p-6 sm:p-7 short:p-5 flex flex-col gap-4 short:gap-3">
+        <div className="h-full p-6 sm:p-8 short:p-6 flex flex-col gap-5 short:gap-4">
             <Eyebrow>flagship · current role</Eyebrow>
             <div>
                 <h2 className="font-display text-4xl sm:text-5xl leading-none text-fg">DreamDesk</h2>
-                <p className="text-sm text-muted mt-2 leading-relaxed">
-                    Hotel AI agent platform · {dreamdesk.role} · {dreamdesk.org}
-                </p>
+                <p className="text-base text-muted mt-2 leading-relaxed">Hotel AI agent platform · {dreamdesk.org}</p>
             </div>
             <DreamDeskDiagram fit className="flex-1 min-h-[150px] flex items-center" />
             <div className="grid grid-cols-3 gap-2">
                 {dreamDeskResults.map((r) => (
                     <div key={r.value} className="rounded-xl border border-line bg-bg px-3 py-2.5">
                         <div className="font-display text-xl sm:text-2xl leading-none text-accent-ink whitespace-nowrap">{r.value}</div>
-                        <div className="font-mono text-[10px] text-subtle mt-1 leading-snug">{r.label}</div>
+                        <div className="font-mono text-[11px] text-subtle mt-1 leading-snug">{r.label}</div>
                     </div>
                 ))}
             </div>
+            <a
+                href="#dreamdesk"
+                className="self-start inline-flex items-center gap-1.5 text-base font-medium text-accent-ink hover:gap-2.5 transition-[gap]"
+            >
+                Read case study <ArrowDown className="w-4 h-4" aria-hidden="true" />
+            </a>
         </div>
     );
 }
 
-/* ---------- Ask my AI ---------- */
+/* ---------- Ask my AI (compact) ---------- */
 
-export function AskPreview() {
+export function AskTile() {
     return (
-        <div className="h-full p-6 short:p-5 flex flex-col justify-between gap-5 short:gap-3 text-fg">
-            <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-fg">✨ ask my AI</p>
-            <p className="font-display text-3xl sm:text-4xl short:text-3xl leading-[1.02]">
-                Don’t want to read? <em>Just ask.</em>
-            </p>
-            <div className="flex items-center gap-2 rounded-full bg-surface px-4 py-2.5 text-[13px] text-muted shadow-sm">
-                <span className="truncate">Is she open to part-time work?</span>
-                <span className="ml-auto text-fg" aria-hidden="true">
-                    →
-                </span>
+        <div className="h-full px-6 py-4 flex items-center gap-4 text-fg">
+            <span className="w-10 h-10 rounded-full bg-surface/90 flex items-center justify-center shrink-0" aria-hidden="true">
+                ✨
+            </span>
+            <div className="min-w-0">
+                <p className="font-display text-2xl leading-none">Don’t want to read?</p>
+                <p className="text-base mt-1">Ask my AI about my work</p>
             </div>
+            <span className="ml-auto text-xl" aria-hidden="true">
+                →
+            </span>
         </div>
     );
 }
 
-/* ---------- Projects ---------- */
-
-export function ProjectsPreview() {
-    return (
-        <div className="h-full p-6 short:p-5 flex flex-col gap-4 short:gap-3">
-            <Eyebrow>projects</Eyebrow>
-            <ul className="space-y-2.5 short:space-y-1.5">
-                {otherProjects.map((p) => (
-                    <li key={p.title} className="flex items-baseline justify-between gap-3 border-b border-line/70 pb-2 last:border-0">
-                        <span className="font-display text-xl short:text-lg leading-tight text-fg truncate">{shortTitle(p)}</span>
-                        <span className="font-mono text-[10px] text-subtle shrink-0">{p.org.split(" ")[0]}</span>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
-}
-
-/* ---------- Experience ---------- */
-
-export function ExperiencePreview() {
-    const items = experience.slice(0, 4);
-    return (
-        <div className="h-full p-6 short:p-5 flex flex-col gap-4 short:gap-3">
-            <Eyebrow>experience</Eyebrow>
-            <ol className="relative space-y-3 short:space-y-2 pl-4">
-                <span className="absolute left-[3px] top-1.5 bottom-1.5 w-px bg-line" aria-hidden="true" />
-                {items.map((job, i) => (
-                    <li key={job.title} className={`relative ${i === 3 ? "short:hidden" : ""}`}>
-                        <span
-                            className={`absolute -left-4 top-1.5 w-[7px] h-[7px] rounded-full ${i === 0 ? "bg-accent" : "bg-surface border border-subtle"}`}
-                            aria-hidden="true"
-                        />
-                        <p className="text-sm font-medium text-fg leading-tight truncate">{(job.company ?? job.title).split(" × ")[0]}</p>
-                        <p className="font-mono text-[10px] text-subtle">{job.period}</p>
-                    </li>
-                ))}
-            </ol>
-        </div>
-    );
-}
-
-/* ---------- Skills ---------- */
-
-export function SkillsPreview() {
-    const groups = Object.entries(skills).slice(0, 4);
-    return (
-        <div className="h-full p-6 short:p-5 flex flex-col gap-4 short:gap-3">
-            <Eyebrow>skills</Eyebrow>
-            <ul className="space-y-2.5 short:space-y-2">
-                {groups.map(([group, items], i) => (
-                    <li key={group} className={i === 3 ? "short:hidden" : undefined}>
-                        <p className="text-[13px] font-medium text-fg leading-tight">{group}</p>
-                        <p className="font-mono text-[10px] text-subtle truncate">{items.slice(0, 3).join(" · ")}</p>
-                    </li>
-                ))}
-            </ul>
-            <p className="font-mono text-[10px] text-subtle mt-auto">+ more groups</p>
-        </div>
-    );
-}
-
-/* ---------- Numbers ---------- */
-
-const STATS = [
-    { value: 50, suffix: "+", label: "companies served" },
-    { value: 2, suffix: "", label: "native apps shipped" },
-    { value: 2, suffix: "+", label: "years in production" },
-];
-
-export function StatsPreview() {
-    return (
-        <div className="h-full p-6 short:p-5 flex flex-col gap-3">
-            <Eyebrow>numbers</Eyebrow>
-            <ul className="flex-1 flex flex-col justify-around gap-2">
-                {STATS.map((s) => (
-                    <li key={s.label} className="flex items-baseline gap-3">
-                        <span className="font-display text-4xl short:text-3xl leading-none text-fg w-16 shrink-0">
-                            <CountUp value={s.value} suffix={s.suffix} />
-                        </span>
-                        <span className="font-mono text-[11px] text-subtle leading-tight">{s.label}</span>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
-}
-
-/* ---------- Contact ---------- */
+/* ---------- Shared contact links ---------- */
 
 export const CONTACT_LINKS = [
     { href: `mailto:${contact.email}`, label: contact.email, short: "Email", Icon: Mail, external: false },
     { href: contact.linkedin, label: "LinkedIn", short: "LinkedIn", Icon: Linkedin, external: true },
     { href: contact.github, label: "GitHub", short: "GitHub", Icon: Github, external: true },
-    { href: contact.cv, label: "Download CV", short: "Download CV", Icon: Download, external: true },
+    { href: contact.cv, label: "View resume", short: "View resume", Icon: FileText, external: true },
 ];
-
-export function ContactPreview() {
-    return (
-        <div className="h-full p-6 short:p-5 flex flex-col gap-3 short:gap-2">
-            <Eyebrow>contact</Eyebrow>
-            <p className="font-display text-3xl short:text-2xl leading-none text-fg">Let’s talk.</p>
-            <ul className="mt-auto space-y-1 short:space-y-0">
-                {CONTACT_LINKS.map(({ href, short, Icon, external }) => (
-                    <li key={short}>
-                        <a
-                            href={href}
-                            {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                            className="group flex items-center gap-2.5 py-1 text-sm text-fg/85 hover:text-accent-ink transition-colors"
-                        >
-                            <Icon className="w-4 h-4 text-subtle group-hover:text-accent-ink shrink-0" aria-hidden="true" />
-                            {short}
-                        </a>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
-}

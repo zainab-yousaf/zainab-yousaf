@@ -9,10 +9,10 @@
     --color-surface-2: #eee8dd;
     --color-line: #e3dacb;
     --color-fg: #1c1915;
-    --color-muted: #5c554b;
-    --color-subtle: #6f675c;
+    --color-muted: #504a41;
+    --color-subtle: #585148;
     --color-accent: #e2582b;
-    --color-accent-ink: #a93c13;
+    --color-accent-ink: #9a3711;
     --color-ok: #2f8a4c;
     --color-warn: #b7791f;
 }
@@ -32,14 +32,16 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Sections land below the sticky nav when jumped to */
-section[id] {
-    scroll-margin-top: 88px;
+/* Anchored blocks land below the sticky nav when jumped to */
+section[id],
+div[id] {
+    scroll-margin-top: 80px;
 }
 
 body {
     background: var(--color-bg);
     color: var(--color-fg);
+    font-size: 16px;
     font-family: var(--font-sans);
     margin: 0;
     overflow-x: hidden;

@@ -56,6 +56,7 @@ function parseMessages(body: unknown): ChatMessage[] | null {
 export async function POST(req: Request) {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
+        console.error("Chat: GEMINI_API_KEY is not set");
         return Response.json(
             { error: "The chat isn't configured yet.", ...(isDev && { detail: "GEMINI_API_KEY is not set." }) },
             { status: 503 }

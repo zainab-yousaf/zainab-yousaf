@@ -1,7 +1,7 @@
 // Monospace tech chip used across the site.
 export default function Tag({ children }: { children: React.ReactNode }) {
     return (
-        <span className="font-mono text-[11px] text-muted px-2 py-1 rounded-md bg-surface-2 border border-line">
+        <span className="font-mono text-xs text-fg/80 px-2 py-1 rounded-md bg-surface-2 border border-line">
             {children}
         </span>
     );

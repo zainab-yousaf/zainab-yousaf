@@ -127,8 +127,8 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                     {/* Header */}
                     <div className="flex items-center justify-between px-5 py-4 border-b border-line">
                         <div>
-                            <p className="text-sm font-semibold text-fg">✨ Ask my AI</p>
-                            <p className="text-[11px] text-subtle">Answers about Zainab, from her portfolio</p>
+                            <p className="text-base font-semibold text-fg">✨ Ask my AI</p>
+                            <p className="text-xs text-subtle">Answers about Zainab, from her portfolio</p>
                         </div>
                         <button
                             onClick={() => setOpen(false)}
@@ -142,7 +142,7 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                     {/* Messages */}
                     <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3" aria-live="polite">
                         <div className="flex">
-                            <div className="max-w-[85%] text-sm text-fg/85 leading-relaxed px-3.5 py-2.5 rounded-2xl rounded-tl-md bg-surface-2">
+                            <div className="max-w-[85%] text-base text-fg leading-relaxed px-3.5 py-2.5 rounded-2xl rounded-tl-md bg-surface-2">
                                 {WELCOME}
                             </div>
                         </div>
@@ -153,7 +153,7 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                                     <button
                                         key={q}
                                         onClick={() => send(q)}
-                                        className="text-xs text-fg/85 text-left font-mono px-3 py-1.5 rounded-full border border-line hover:border-accent/60 transition-colors"
+                                        className="text-sm text-fg text-left px-3 py-1.5 rounded-full border border-line hover:border-accent/60 transition-colors"
                                     >
                                         {q}
                                     </button>
@@ -164,10 +164,10 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                         {messages.map((m, i) => (
                             <div key={i} className={`flex ${m.role === "user" ? "justify-end" : ""}`}>
                                 <div
-                                    className={`max-w-[85%] text-sm leading-relaxed px-3.5 py-2.5 rounded-2xl whitespace-pre-wrap break-words ${
+                                    className={`max-w-[85%] text-base leading-relaxed px-3.5 py-2.5 rounded-2xl whitespace-pre-wrap break-words ${
                                         m.role === "user"
                                             ? "text-fg bg-accent rounded-tr-md"
-                                            : "text-fg/85 bg-surface-2 rounded-tl-md"
+                                            : "text-fg bg-surface-2 rounded-tl-md"
                                     }`}
                                 >
                                     {m.role === "assistant" ? <Linkified text={m.content} /> : m.content}
@@ -206,7 +206,7 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                             maxLength={MAX_CHARS}
                             placeholder="Ask about Zainab…"
                             aria-label="Your question"
-                            className="flex-1 min-w-0 px-4 py-2.5 text-sm text-fg bg-bg border border-line rounded-xl placeholder:text-subtle focus:outline-none focus:border-accent/70 focus:ring-1 focus:ring-accent/40"
+                            className="flex-1 min-w-0 px-4 py-2.5 text-base text-fg bg-bg border border-line rounded-xl placeholder:text-subtle focus:outline-none focus:border-accent/70 focus:ring-1 focus:ring-accent/40"
                         />
                         <button
                             type="submit"

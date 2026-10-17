@@ -2,112 +2,97 @@
 
 import React, { useState } from "react";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { contact } from "@/lib/content";
 
-// Contact form (posts to Formspree).
+type Status = { kind: "idle" } | { kind: "sending" } | { kind: "sent" } | { kind: "error"; message: string };
+
+const EMPTY = { name: "", email: "", subject: "", message: "", website: "" };
+
+// Contact form → /api/contact (Resend or Formspree, configured with env vars on the server).
 export default function ContactForm() {
-    const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+    const [form, setForm] = useState(EMPTY);
+    const [status, setStatus] = useState<Status>({ kind: "idle" });
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+    const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+        if (status.kind === "error" || status.kind === "sent") setStatus({ kind: "idle" });
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setIsSubmitting(true);
+        setStatus({ kind: "sending" });
         try {
-            const res = await fetch("https://formspree.io/f/mqevpoal", {
+            const res = await fetch("/api/contact", {
                 method: "POST",
-                headers: { "Content-Type": "application/json", Accept: "application/json" },
-                body: JSON.stringify(formData),
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form),
             });
+            const data = (await res.json().catch(() => ({}))) as { error?: string };
             if (res.ok) {
-                setSubmitStatus("success");
-                setFormData({ name: "", email: "", subject: "", message: "" });
-                setTimeout(() => setSubmitStatus("idle"), 4000);
+                setStatus({ kind: "sent" });
+                setForm(EMPTY);
             } else {
-                setSubmitStatus("error");
+                setStatus({ kind: "error", message: data.error || "Your message couldn't be sent." });
             }
         } catch {
-            setSubmitStatus("error");
-        } finally {
-            setIsSubmitting(false);
+            setStatus({ kind: "error", message: "Network error: your message couldn't be sent." });
         }
     };
 
-    const inputClass =
-        "w-full px-4 py-3 text-sm text-fg placeholder:text-subtle bg-bg border border-line rounded-xl transition-colors focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/25";
+    const input =
+        "w-full px-4 py-3 text-base text-fg placeholder:text-subtle bg-bg border border-line rounded-xl transition-colors focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/25";
+    const sending = status.kind === "sending";
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-3">
+        <form onSubmit={onSubmit} className="space-y-3" noValidate={false}>
             <div className="grid sm:grid-cols-2 gap-3">
-                <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="Your name"
-                    aria-label="Your name"
-                    className={inputClass}
-                />
-                <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="Your email"
-                    aria-label="Your email"
-                    className={inputClass}
-                />
+                <input type="text" name="name" value={form.name} onChange={onChange} required maxLength={100} placeholder="Your name" aria-label="Your name" autoComplete="name" className={input} />
+                <input type="email" name="email" value={form.email} onChange={onChange} required maxLength={200} placeholder="Your email" aria-label="Your email" autoComplete="email" className={input} />
             </div>
-            <input
-                type="text"
-                name="subject"
-                value={formData.subject}
-                onChange={handleInputChange}
-                required
-                placeholder="Subject"
-                aria-label="Subject"
-                className={inputClass}
-            />
-            <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                required
-                rows={5}
-                placeholder="Your message"
-                aria-label="Your message"
-                className={inputClass + " resize-none"}
-            />
+            <input type="text" name="subject" value={form.subject} onChange={onChange} required maxLength={200} placeholder="Subject" aria-label="Subject" className={input} />
+            <textarea name="message" value={form.message} onChange={onChange} required maxLength={5000} rows={5} placeholder="Your message" aria-label="Your message" className={`${input} resize-none`} />
+
+            {/* Honeypot for spam bots: hidden from people and screen readers */}
+            <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+                <label>
+                    Website
+                    <input type="text" name="website" value={form.website} onChange={onChange} tabIndex={-1} autoComplete="off" />
+                </label>
+            </div>
+
             <button
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 text-sm font-semibold text-fg bg-accent px-5 py-3 rounded-xl transition-[box-shadow,transform] hover:-translate-y-px hover:shadow-[0_10px_24px_-12px_var(--color-accent)] disabled:opacity-50"
+                disabled={sending}
+                className="w-full flex items-center justify-center gap-2 text-base font-semibold text-fg bg-accent px-5 py-3 rounded-xl transition-[box-shadow,transform] hover:-translate-y-px hover:shadow-[0_10px_24px_-12px_var(--color-accent)] disabled:opacity-60 disabled:hover:translate-y-0"
             >
-                {isSubmitting ? (
-                    <div className="w-4 h-4 border-2 border-fg border-t-transparent rounded-full animate-spin" />
+                {sending ? (
+                    <span className="w-4 h-4 border-2 border-fg border-t-transparent rounded-full animate-spin" aria-hidden="true" />
                 ) : (
-                    <Send className="w-4 h-4" />
+                    <Send className="w-4 h-4" aria-hidden="true" />
                 )}
-                {isSubmitting ? "Sending..." : "Send message"}
+                {sending ? "Sending…" : "Send message"}
             </button>
 
-            {submitStatus === "success" && (
-                <div className="flex items-center gap-2 text-sm text-ok bg-ok/10 border border-ok/30 px-4 py-3 rounded-xl">
-                    <CheckCircle className="w-4 h-4" />
-                    Message sent!
-                </div>
-            )}
-            {submitStatus === "error" && (
-                <div className="flex items-center gap-2 text-sm text-red-800 bg-red-50 border border-red-200 px-4 py-3 rounded-xl">
-                    <AlertCircle className="w-4 h-4" />
-                    Failed to send. Please try again.
-                </div>
-            )}
+            <div aria-live="polite">
+                {status.kind === "sent" && (
+                    <p className="flex items-center gap-2 text-base text-ok bg-ok/10 border border-ok/30 px-4 py-3 rounded-xl">
+                        <CheckCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
+                        Thanks! Your message was sent. I&apos;ll get back to you soon.
+                    </p>
+                )}
+                {status.kind === "error" && (
+                    <p className="flex items-start gap-2 text-base text-red-800 bg-red-50 border border-red-200 px-4 py-3 rounded-xl">
+                        <AlertCircle className="w-4 h-4 shrink-0 mt-1" aria-hidden="true" />
+                        <span>
+                            {status.message} Please email me directly at{" "}
+                            <a href={`mailto:${contact.email}`} className="underline font-medium">
+                                {contact.email}
+                            </a>
+                            .
+                        </span>
+                    </p>
+                )}
+            </div>
         </form>
     );
 }
