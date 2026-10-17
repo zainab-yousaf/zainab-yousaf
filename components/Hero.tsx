@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import ChatDemo from "./ChatDemo";
 
 export default function Hero() {
   const scroll = (id: string) => {
@@ -13,7 +12,7 @@ export default function Hero() {
   return (
     <section id="about" className="pt-10 pb-3">
       <div
-        className="bg-white rounded-2xl p-8 grid gap-10 md:grid-cols-[1fr_300px] md:items-center"
+        className="bg-white rounded-2xl p-8"
         style={{ border: "1px solid #e0dfd8" }}
       >
         <div className="space-y-6">
@@ -83,8 +82,6 @@ export default function Hero() {
             </button>
           </div>
         </div>
-
-        <ChatDemo />
       </div>
     </section>
   );

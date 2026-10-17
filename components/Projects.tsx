@@ -23,7 +23,7 @@ const projects: Project[] = [
         org: "DreamDesk AI · UK (Remote)",
         role: "Founding Engineer",
         description:
-            "Multi-channel AI agents that answer guests on every channel from one platform, look up live reservations, and escalate to staff when they're not confident. Built on a 4-stage Pydantic AI agent graph with RAG over hotel knowledge via Pinecone and MCP tool calling, across voice calls, WhatsApp, email and web chat.",
+            "Multi-channel AI agents that answer guests on every channel from one platform, look up live reservations, and escalate to staff when they're not confident. Works across voice calls, WhatsApp, email and web chat.",
         impact: "Live across 3 hotels, ~1.6s voice agent response time",
         skills: ["Python", "FastAPI", "Pydantic AI", "VAPI", "Retell", "MCP", "Pinecone", "PostgreSQL", "Next.js", "GCP Cloud Run", "Logfire", "PostHog"],
         github: null,
