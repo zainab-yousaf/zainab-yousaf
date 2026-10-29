@@ -52,7 +52,7 @@ const TALL: Layout = {
     coreIn: [160, 112],
     coreOut: [160, 208],
     outIn: (b) => [b.x + b.w / 2, b.y],
-    text: { label: 13.5, core: 15, note: 11.5 },
+    text: { label: 13.5, core: 15, note: 12 },
 };
 
 function Diagram({ layout, className }: { layout: Layout; className: string }) {

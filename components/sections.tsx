@@ -248,8 +248,8 @@ export function DreamDeskSection() {
                     <Label>Results</Label>
                     <dl className="space-y-4">
                         {dreamDeskResults.map((r) => (
-                            <div key={r.value} className="flex items-baseline gap-4 border-b border-line pb-4 last:border-0 last:pb-0">
-                                <dt className="font-display text-3xl text-espresso leading-none min-w-[4.5ch]">{r.value}</dt>
+                            <div key={r.value} className="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-line pb-4 last:border-0 last:pb-0">
+                                <dt className="font-display text-3xl text-espresso leading-none whitespace-nowrap min-w-[4.5ch]">{r.value}</dt>
                                 <dd className="text-[15px] text-muted">{r.label}</dd>
                             </div>
                         ))}
@@ -514,13 +514,16 @@ export function ContactSection() {
 export function SiteFooter() {
     return (
         <footer className="bg-espresso text-ivory/70">
-            <div className="container-page py-8 border-t border-ivory/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
-                <p>
-                    <span className="font-display text-lg text-ivory mr-2">Zainab Yousaf</span>© {new Date().getFullYear()} · AI Engineer · Full-Stack Developer
-                </p>
-                <a href="#overview" className="hover:text-ivory transition-colors">
-                    Back to top ↑
-                </a>
+            <div className="container-page">
+                <div className="py-8 border-t border-ivory/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-center sm:text-left">
+                    <p className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
+                        <span className="font-display text-lg text-ivory">Zainab Yousaf</span>
+                        <span>© {new Date().getFullYear()} · AI Engineer · Full-Stack Developer</span>
+                    </p>
+                    <a href="#overview" className="hover:text-ivory transition-colors">
+                        Back to top ↑
+                    </a>
+                </div>
             </div>
         </footer>
     );

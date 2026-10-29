@@ -33,7 +33,7 @@ export default function Hero() {
                     </p>
 
                     <div
-                        className="rise-in mt-10 flex flex-wrap items-center gap-3"
+                        className="rise-in mt-10 grid grid-cols-1 sm:flex sm:flex-wrap sm:items-center gap-3"
                         style={{ "--delay": "180ms" } as React.CSSProperties}
                     >
                         <a href="#work" className="btn btn-primary">
@@ -59,9 +59,9 @@ export default function Hero() {
                     className="rise-in surface p-5 sm:p-7 w-full max-w-[640px] lg:justify-self-end"
                     style={{ "--delay": "140ms" } as React.CSSProperties}
                 >
-                    <div className="flex items-baseline justify-between gap-4 pb-4 sm:pb-5 border-b border-line">
-                        <p className="font-display text-2xl text-espresso leading-none">DreamDesk AI</p>
-                        <p className="text-[13px] text-muted">Founding engineer · 2026</p>
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 pb-4 sm:pb-5 border-b border-line">
+                        <p className="font-display text-2xl text-espresso leading-none whitespace-nowrap">DreamDesk AI</p>
+                        <p className="text-[13px] text-muted whitespace-nowrap">Founding engineer · 2026</p>
                     </div>
 
                     <DreamDeskDiagram className="py-6 sm:py-8" />
