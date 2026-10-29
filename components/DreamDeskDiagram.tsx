@@ -17,38 +17,42 @@ type Layout = {
     coreIn: [number, number];
     coreOut: [number, number];
     outIn: (b: Box) => [number, number];
+    // Label sizes (viewBox units): the wide layout is drawn smaller on screen, so its text is larger
+    text: { label: number; core: number; note: number };
 };
 
 const CHANNELS = ["Voice", "WhatsApp", "Email", "Web chat"];
 
 // Wide screens: channels on the left, black box in the middle, outcomes on the right.
 const WIDE: Layout = {
-    viewBox: "0 0 520 216",
-    channels: [0, 1, 2, 3].map((i) => ({ x: 4, y: 8 + i * 52, w: 112, h: 34 })),
-    core: { x: 196, y: 58, w: 128, h: 100 },
+    viewBox: "0 0 500 242",
+    channels: [0, 1, 2, 3].map((i) => ({ x: 1, y: 1 + i * 64, w: 108, h: 44 })),
+    core: { x: 176, y: 63, w: 138, h: 116 },
     outputs: [
-        { x: 388, y: 40, w: 128, h: 40 },
-        { x: 388, y: 132, w: 128, h: 48 },
+        { x: 347, y: 46, w: 152, h: 50 },
+        { x: 347, y: 140, w: 152, h: 62 },
     ],
     chOut: (b) => [b.x + b.w, b.y + b.h / 2],
-    coreIn: [196, 108],
-    coreOut: [324, 108],
+    coreIn: [176, 121],
+    coreOut: [314, 121],
     outIn: (b) => [b.x, b.y + b.h / 2],
+    text: { label: 15, core: 16.5, note: 12.5 },
 };
 
 // Phones: channels across the top, black box, outcomes underneath.
 const TALL: Layout = {
-    viewBox: "0 0 320 330",
-    channels: [0, 1, 2, 3].map((i) => ({ x: 4 + i * 79, y: 6, w: 75, h: 32 })),
-    core: { x: 90, y: 112, w: 140, h: 92 },
+    viewBox: "0 0 320 336",
+    channels: [0, 1, 2, 3].map((i) => ({ x: 2 + i * 79.5, y: 4, w: 77, h: 36 })),
+    core: { x: 88, y: 112, w: 144, h: 96 },
     outputs: [
-        { x: 8, y: 272, w: 140, h: 40 },
-        { x: 172, y: 268, w: 140, h: 48 },
+        { x: 2, y: 272, w: 150, h: 44 },
+        { x: 168, y: 268, w: 150, h: 54 },
     ],
     chOut: (b) => [b.x + b.w / 2, b.y + b.h],
     coreIn: [160, 112],
-    coreOut: [160, 204],
+    coreOut: [160, 208],
     outIn: (b) => [b.x + b.w / 2, b.y],
+    text: { label: 13.5, core: 15, note: 11.5 },
 };
 
 function Diagram({ layout, className }: { layout: Layout; className: string }) {
@@ -64,12 +68,12 @@ function Diagram({ layout, className }: { layout: Layout; className: string }) {
     const xs = [start[0], layout.coreIn[0], layout.coreOut[0], end[0]];
     const ys = [start[1], layout.coreIn[1], layout.coreOut[1], end[1]];
     const animating = inView && !reduce;
-    const { core } = layout;
+    const { core, text: t } = layout;
 
     return (
         <svg ref={ref} viewBox={layout.viewBox} className={className} role="presentation" aria-hidden="true">
             {/* Connectors */}
-            <g stroke="var(--color-line)" strokeWidth="1.5" fill="none">
+            <g stroke="var(--color-line-strong)" strokeWidth="1.25" fill="none">
                 {layout.channels.map((b, i) => {
                     const [x1, y1] = layout.chOut(b);
                     return <line key={i} x1={x1} y1={y1} x2={layout.coreIn[0]} y2={layout.coreIn[1]} />;
@@ -97,18 +101,18 @@ function Diagram({ layout, className }: { layout: Layout; className: string }) {
                         y={b.y}
                         width={b.w}
                         height={b.h}
-                        rx="8"
-                        fill="var(--color-surface-2)"
-                        stroke={animating && i === ch ? "var(--color-accent)" : "var(--color-line)"}
+                        rx="10"
+                        fill="var(--color-ivory)"
+                        stroke={animating && i === ch ? "var(--color-terracotta)" : "var(--color-line-strong)"}
                         style={{ transition: "stroke 0.3s" }}
                     />
                     <text
                         x={b.x + b.w / 2}
-                        y={b.y + b.h / 2 + 4}
+                        y={b.y + b.h / 2 + t.label * 0.35}
                         textAnchor="middle"
-                        fill="var(--color-fg)"
-                        fontSize="12"
-                        className="font-mono"
+                        fill="var(--color-espresso)"
+                        fontSize={t.label}
+                        fontWeight="500"
                     >
                         {CHANNELS[i]}
                     </text>
@@ -116,15 +120,15 @@ function Diagram({ layout, className }: { layout: Layout; className: string }) {
             ))}
 
             {/* The black box */}
-            <rect x={core.x} y={core.y} width={core.w} height={core.h} rx="12" fill="var(--color-fg)" stroke="var(--color-fg)" />
-            <g transform={`translate(${core.x + core.w / 2 - 7}, ${core.y + 18})`} stroke="var(--color-accent)" strokeWidth="1.5" fill="none">
+            <rect x={core.x} y={core.y} width={core.w} height={core.h} rx="14" fill="var(--color-espresso)" stroke="var(--color-espresso)" />
+            <g transform={`translate(${core.x + core.w / 2 - 7}, ${core.y + core.h / 2 - 34})`} stroke="var(--color-gold)" strokeWidth="1.5" fill="none">
                 <rect x="0.75" y="7" width="12.5" height="9" rx="2" />
                 <path d="M3.5 7V5a3.5 3.5 0 0 1 7 0v2" strokeLinecap="round" />
             </g>
-            <text x={core.x + core.w / 2} y={core.y + core.h / 2 + 10} textAnchor="middle" fill="var(--color-bg)" fontSize="13" fontWeight="600">
+            <text x={core.x + core.w / 2} y={core.y + core.h / 2 + 10} textAnchor="middle" fill="var(--color-ivory)" fontSize={t.core} fontWeight="600">
                 DreamDesk AI
             </text>
-            <text x={core.x + core.w / 2} y={core.y + core.h / 2 + 26} textAnchor="middle" fill="#c9c1b4" fontSize="10" className="font-mono">
+            <text x={core.x + core.w / 2} y={core.y + core.h / 2 + 12 + t.note * 1.4} textAnchor="middle" fill="#cbbfae" fontSize={t.note}>
                 internals private
             </text>
 
@@ -136,18 +140,18 @@ function Diagram({ layout, className }: { layout: Layout; className: string }) {
                         y={b.y}
                         width={b.w}
                         height={b.h}
-                        rx="8"
-                        fill="var(--color-surface-2)"
-                        stroke={i === 0 ? "var(--color-ok)" : "var(--color-warn)"}
+                        rx="10"
+                        fill="var(--color-cream)"
+                        stroke={i === 0 ? "var(--color-espresso)" : "var(--color-amber)"}
                         strokeDasharray={i === 1 ? "4 3" : undefined}
-                        strokeOpacity={animating && i === out ? 1 : 0.5}
+                        strokeOpacity={animating && i === out ? 1 : 0.55}
                         style={{ transition: "stroke-opacity 0.3s" }}
                     />
-                    <text x={b.x + b.w / 2} y={b.y + (i === 0 ? 24 : 21)} textAnchor="middle" fill="var(--color-fg)" fontSize="12" fontWeight="600">
+                    <text x={b.x + b.w / 2} y={i === 0 ? b.y + b.h / 2 + t.label * 0.35 : b.y + b.h * 0.42} textAnchor="middle" fill="var(--color-espresso)" fontSize={t.label} fontWeight="600">
                         {i === 0 ? "Reply to guest" : "Escalate to staff"}
                     </text>
                     {i === 1 && (
-                        <text x={b.x + b.w / 2} y={b.y + 37} textAnchor="middle" fill="var(--color-muted)" fontSize="10">
+                        <text x={b.x + b.w / 2} y={b.y + b.h * 0.42 + t.note * 1.45} textAnchor="middle" fill="var(--color-muted)" fontSize={t.note}>
                             when confidence is low
                         </text>
                     )}
@@ -159,8 +163,7 @@ function Diagram({ layout, className }: { layout: Layout; className: string }) {
                 <motion.circle
                     key={cycle}
                     r="5"
-                    fill="var(--color-accent)"
-                    style={{ filter: "drop-shadow(0 0 4px var(--color-accent))" }}
+                    fill="var(--color-terracotta)"
                     initial={{ cx: xs[0], cy: ys[0], opacity: 0 }}
                     animate={{ cx: xs, cy: ys, opacity: [0, 1, 1, 0] }}
                     transition={{
@@ -176,24 +179,16 @@ function Diagram({ layout, className }: { layout: Layout; className: string }) {
     );
 }
 
-// `fit`: fill the parent's height (used inside the bento tile) instead of sizing by width.
-// `large`: a bigger version for the case-study section.
-export default function DreamDeskDiagram({
-    className = "",
-    fit = false,
-    large = false,
-}: {
-    className?: string;
-    fit?: boolean;
-    large?: boolean;
-}) {
+// `large`: a bigger version for the case-study section. The caller supplies any frame around it.
+export default function DreamDeskDiagram({ className = "", large = false }: { className?: string; large?: boolean }) {
     return (
-        <figure
-            className={`rounded-2xl border border-line bg-bg/70 p-3 sm:p-4 ${className}`}
+        <div
+            role="img"
+            className={className}
             aria-label="DreamDesk overview: guest messages from voice, WhatsApp, email and web chat go into the DreamDesk AI platform, which replies to the guest or escalates to hotel staff when confidence is low."
         >
-            <Diagram layout={WIDE} className={`hidden sm:block w-full mx-auto ${fit ? "h-full" : large ? "max-w-[860px] h-auto" : "max-w-[560px] h-auto"}`} />
-            <Diagram layout={TALL} className="sm:hidden w-full max-w-[340px] mx-auto h-auto" />
-        </figure>
+            <Diagram layout={WIDE} className={`hidden sm:block w-full mx-auto h-auto ${large ? "max-w-[720px]" : "max-w-[600px]"}`} />
+            <Diagram layout={TALL} className="sm:hidden w-full max-w-[360px] mx-auto h-auto" />
+        </div>
     );
 }

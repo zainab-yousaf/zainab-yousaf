@@ -1,7 +1,7 @@
-// Monospace tech chip used across the site.
+// Restrained technology tag: hairline outline, no fill.
 export default function Tag({ children }: { children: React.ReactNode }) {
     return (
-        <span className="font-mono text-xs text-fg/80 px-2 py-1 rounded-md bg-surface-2 border border-line">
+        <span className="inline-block text-sm text-espresso px-2.5 py-1 rounded-md border border-line-strong leading-snug">
             {children}
         </span>
     );
@@ -9,10 +9,12 @@ export default function Tag({ children }: { children: React.ReactNode }) {
 
 export function Tags({ items }: { items: string[] }) {
     return (
-        <div className="flex flex-wrap gap-1.5">
+        <ul className="flex flex-wrap gap-2">
             {items.map((t) => (
-                <Tag key={t}>{t}</Tag>
+                <li key={t}>
+                    <Tag>{t}</Tag>
+                </li>
             ))}
-        </div>
+        </ul>
     );
 }

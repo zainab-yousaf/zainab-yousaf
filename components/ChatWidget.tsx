@@ -122,7 +122,7 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                 <div
                     role="dialog"
                     aria-label="Ask my AI"
-                    className="fixed z-[60] bottom-4 right-4 left-4 sm:left-auto sm:w-[380px] h-[min(560px,calc(100dvh-2rem))] bg-surface border border-line rounded-2xl flex flex-col overflow-hidden shadow-[0_24px_60px_-24px_rgba(169,60,19,0.35)]"
+                    className="fixed z-[60] bottom-4 right-4 left-4 sm:left-auto sm:w-[380px] h-[min(560px,calc(100dvh-2rem))] bg-surface border border-line rounded-2xl flex flex-col overflow-hidden shadow-[0_24px_60px_-24px_rgba(48,35,30,0.35)]"
                 >
                     {/* Header */}
                     <div className="flex items-center justify-between px-5 py-4 border-b border-line">
@@ -153,7 +153,7 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                                     <button
                                         key={q}
                                         onClick={() => send(q)}
-                                        className="text-sm text-fg text-left px-3 py-1.5 rounded-full border border-line hover:border-accent/60 transition-colors"
+                                        className="text-sm text-fg text-left px-3 py-1.5 rounded-full border border-line hover:border-espresso transition-colors"
                                     >
                                         {q}
                                     </button>
@@ -166,7 +166,7 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                                 <div
                                     className={`max-w-[85%] text-base leading-relaxed px-3.5 py-2.5 rounded-2xl whitespace-pre-wrap break-words ${
                                         m.role === "user"
-                                            ? "text-fg bg-accent rounded-tr-md"
+                                            ? "text-ivory bg-espresso rounded-tr-md"
                                             : "text-fg bg-surface-2 rounded-tl-md"
                                     }`}
                                 >
@@ -206,13 +206,13 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                             maxLength={MAX_CHARS}
                             placeholder="Ask about Zainab…"
                             aria-label="Your question"
-                            className="flex-1 min-w-0 px-4 py-2.5 text-base text-fg bg-bg border border-line rounded-xl placeholder:text-subtle focus:outline-none focus:border-accent/70 focus:ring-1 focus:ring-accent/40"
+                            className="flex-1 min-w-0 px-4 py-2.5 text-base text-fg bg-bg border border-line rounded-xl placeholder:text-subtle focus:outline-none focus-visible:outline-none focus:border-espresso focus:ring-2 focus:ring-amber/40"
                         />
                         <button
                             type="submit"
                             disabled={loading || !input.trim()}
                             aria-label="Send"
-                            className="w-10 h-10 shrink-0 flex items-center justify-center rounded-xl text-fg bg-accent transition-opacity hover:opacity-90 disabled:opacity-40"
+                            className="w-10 h-10 shrink-0 flex items-center justify-center rounded-xl text-white bg-cta transition-colors hover:bg-cta-hover disabled:opacity-40"
                         >
                             <Send className="w-4 h-4" />
                         </button>

@@ -1,24 +1,41 @@
 @import "tailwindcss";
 
-/* Design tokens: warm editorial light theme with one terracotta accent.
-   accent      → fills, dots, borders, glows (use near-black text on top of it)
-   accent-ink  → terracotta *text* on cream (darker so small text stays readable) */
+/* Design tokens: warm editorial palette.
+   ivory / cream     → page and card surfaces
+   espresso          → headings, nav, primary text
+   taupe             → large secondary text and hairline details (too light for small body text)
+   muted             → small secondary text (a darker taupe that passes WCAG AA on ivory)
+   gold / amber      → sparing decorative details and selected states
+   terracotta        → CTA fills and interactive accents
+   terracotta-ink    → terracotta *text* on light surfaces (darker so it stays readable)
+   cta               → button fill: a hair deeper than terracotta so white button text passes AA */
 @theme {
-    --color-bg: #f5f1ea;
-    --color-surface: #fffcf7;
-    --color-surface-2: #eee8dd;
-    --color-line: #e3dacb;
-    --color-fg: #1c1915;
-    --color-muted: #504a41;
-    --color-subtle: #585148;
-    --color-accent: #e2582b;
-    --color-accent-ink: #9a3711;
-    --color-ok: #2f8a4c;
-    --color-warn: #b7791f;
-}
+    --color-ivory: #f7f3eb;
+    --color-cream: #fffcf6;
+    --color-espresso: #30231e;
+    --color-gold: #b99a62;
+    --color-amber: #d99a45;
+    --color-terracotta: #d85b35;
+    --color-taupe: #8b7c70;
 
-/* `short:` = desktop-width screens that are not very tall (e.g. 1280x720 laptops): the bento gets compact. */
-@custom-variant short (@media (min-width: 1024px) and (max-height: 820px));
+    --color-muted: #65574c;
+    --color-line: #e6ddcf;
+    --color-line-strong: #d6cab8;
+    --color-terracotta-ink: #a8431f;
+    --color-cta: #c4502b;
+    --color-cta-hover: #ad4524;
+
+    /* Kept for the chat widget and contact form */
+    --color-bg: var(--color-ivory);
+    --color-surface: var(--color-cream);
+    --color-surface-2: #f1ebe0;
+    --color-fg: var(--color-espresso);
+    --color-subtle: var(--color-muted);
+    --color-accent: var(--color-terracotta);
+    --color-accent-ink: var(--color-terracotta-ink);
+    --color-ok: #4f7a4a;
+    --color-warn: var(--color-amber);
+}
 
 @theme inline {
     --font-sans: var(--font-body), system-ui, -apple-system, sans-serif;
@@ -27,7 +44,7 @@
 }
 
 html {
-    background: var(--color-bg);
+    background: var(--color-ivory);
     color-scheme: light;
     scroll-behavior: smooth;
 }
@@ -35,13 +52,14 @@ html {
 /* Anchored blocks land below the sticky nav when jumped to */
 section[id],
 div[id] {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 72px;
 }
 
 body {
-    background: var(--color-bg);
-    color: var(--color-fg);
+    background: var(--color-ivory);
+    color: var(--color-espresso);
     font-size: 16px;
+    line-height: 1.6;
     font-family: var(--font-sans);
     margin: 0;
     overflow-x: hidden;
@@ -54,42 +72,114 @@ body {
 }
 
 ::selection {
-    background: color-mix(in srgb, var(--color-accent) 25%, transparent);
+    background: color-mix(in srgb, var(--color-amber) 35%, transparent);
+}
+
+/* One visible focus style for every interactive element */
+:where(a, button, input, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-terracotta-ink);
+    outline-offset: 3px;
+    border-radius: 6px;
 }
 
 @layer components {
-/* Tiles: thin border, soft shadow; on hover a slight lift and accent border.
-   The lift uses the separate `translate` property so it never fights Motion's layout transforms. */
-.tile {
-    background: var(--color-surface);
-    border: 1px solid var(--color-line);
-    box-shadow: 0 1px 2px rgba(28, 25, 21, 0.04), 0 8px 24px -16px rgba(28, 25, 21, 0.18);
-    transition: translate 0.25s ease-out, border-color 0.25s ease-out, box-shadow 0.25s ease-out;
-}
-.tile:not(.tile-static):hover,
-.tile:not(.tile-static):focus-within {
-    translate: 0 -3px;
-    border-color: color-mix(in srgb, var(--color-accent) 70%, transparent);
-    box-shadow: 0 1px 2px rgba(28, 25, 21, 0.05), 0 18px 36px -18px rgba(169, 60, 19, 0.35);
+    /* Page container: one width and gutter for every section */
+    .container-page {
+        width: 100%;
+        max-width: 1200px;
+        margin-inline: auto;
+        padding-inline: 20px;
+    }
+    @media (min-width: 640px) {
+        .container-page {
+            padding-inline: 32px;
+        }
+    }
+    @media (min-width: 1024px) {
+        .container-page {
+            padding-inline: 48px;
+        }
+    }
+
+    /* Small uppercase label above headings */
+    .eyebrow {
+        font-family: var(--font-sans);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--color-muted);
+    }
+
+    /* Buttons */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-height: 48px;
+        padding: 0 1.5rem;
+        border-radius: 999px;
+        font-size: 0.975rem;
+        font-weight: 600;
+        line-height: 1;
+        transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease;
+    }
+    .btn-primary {
+        background: var(--color-cta);
+        color: #fff;
+    }
+    .btn-primary:hover {
+        background: var(--color-cta-hover);
+    }
+    .btn-secondary {
+        border: 1px solid var(--color-line-strong);
+        color: var(--color-espresso);
+        background: transparent;
+    }
+    .btn-secondary:hover {
+        border-color: var(--color-espresso);
+    }
+
+    /* Text link with an underline that strengthens on hover */
+    .link {
+        color: var(--color-terracotta-ink);
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 4px;
+        text-decoration-color: color-mix(in srgb, var(--color-terracotta-ink) 35%, transparent);
+        transition: text-decoration-color 0.2s ease;
+    }
+    .link:hover {
+        text-decoration-color: currentColor;
+    }
+
+    /* Content surface: flat cream with a hairline, no shadow */
+    .surface {
+        background: var(--color-cream);
+        border: 1px solid var(--color-line);
+        border-radius: 20px;
+    }
 }
 
-/* Load-in: tiles fade and scale in with a short stagger (CSS, so it starts at first paint). */
-/* Starts at 0.01, not 0: fully transparent content doesn't count as painted, which would leave
-   the page with no Largest Contentful Paint. */
-@keyframes tile-in {
+/* Hero load-in. Starts at 0.01, not 0: fully transparent content doesn't count as painted. */
+@keyframes rise-in {
     from {
         opacity: 0.01;
-        transform: scale(0.97) translateY(6px);
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
         transform: none;
     }
 }
-.tile-in {
-    animation: tile-in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+.rise-in {
+    animation: rise-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
     animation-delay: var(--delay, 0ms);
-}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -100,15 +190,10 @@ body {
         opacity: 1 !important;
         transform: none !important;
     }
-    .tile-in,
+    .rise-in,
     .animate-ping,
-    .animate-bounce {
+    .animate-bounce,
+    .animate-spin {
         animation: none !important;
-    }
-    .tile,
-    .tile:hover,
-    .tile:focus-within {
-        transition: none;
-        translate: none;
     }
 }

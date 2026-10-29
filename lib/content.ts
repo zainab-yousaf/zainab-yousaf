@@ -120,6 +120,10 @@ export const experience: Entry[] = [
 
 export type Project = {
     title: string;
+    /** One-line value proposition shown on the project card */
+    tagline: string;
+    /** What Zainab personally built, in one or two sentences */
+    contribution: string;
     period: string;
     org: string;
     role: string;
@@ -134,6 +138,8 @@ export type Project = {
 export const projects: Project[] = [
     {
         title: "DreamDesk: Hotel AI Agent Platform",
+        tagline: "One AI platform that answers hotel guests on every channel.",
+        contribution: "Owned the architecture and delivered the POC in 4 weeks, then built the agents, voice pipeline, integrations and dashboard.",
         period: "Jan 2026 – Present",
         org: "DreamDesk AI · UK (Remote)",
         role: "Founding Engineer (Full-Stack AI)",
@@ -147,6 +153,9 @@ export const projects: Project[] = [
     },
     {
         title: "AutoMato AI: E-commerce Optimization Platform",
+        tagline: "A GenAI pipeline that writes SEO-optimized Amazon listings from live competitor data.",
+        contribution:
+            "Built the pipeline: Amazon Seller API keyword extraction, OpenAI content generation, NestJS microservices on PostgreSQL and a React dashboard to review, edit and publish listings.",
         period: "Jul 2025 – Dec 2025",
         org: "AutoMato AI",
         role: "Software Engineer",
@@ -159,6 +168,9 @@ export const projects: Project[] = [
     },
     {
         title: "Smart Contract Security: Grey-Box Fuzzing",
+        tagline: "Information-flow analysis that steers a fuzzer toward the riskiest smart-contract code.",
+        contribution:
+            "Designed the algorithm combining static analysis with grey-box fuzzing, and validated it with researchers from DFKI Germany and FAST-NUCES.",
         period: "Aug 2023 – Apr 2024",
         org: "DFKI Germany × FAST-NUCES",
         role: "Research Collaborator",
@@ -171,6 +183,9 @@ export const projects: Project[] = [
     },
     {
         title: "BGZoom: macOS Video Calling App",
+        tagline: "Real-time background effects for Zoom, Google Meet, Teams and Skype on macOS.",
+        contribution:
+            "Built async video streaming with Swift Concurrency and optimized the AVFoundation integration for low-latency video and audio.",
         period: "Mar 2025 – Jun 2025",
         org: "KATco",
         role: "Software Engineer (iOS/macOS)",
@@ -183,6 +198,9 @@ export const projects: Project[] = [
     },
     {
         title: "PDF Converter iOS / macOS",
+        tagline: "Photo-to-PDF conversion and editing for iOS and macOS.",
+        contribution:
+            "Built it end to end: image-to-PDF, PDF rotation, resize, crop and watermarking. Swift Concurrency made processing 30% faster; the Cloud Converter API cut manual effort by 40%.",
         period: "Nov 2024 – Jun 2025",
         org: "KATco",
         role: "Software Engineer (iOS/macOS)",
@@ -195,44 +213,54 @@ export const projects: Project[] = [
     },
 ];
 
+// Grouped for the Skills section. Every tool listed here has been used in the work above.
 export const skills: Record<string, string[]> = {
-    "AI & Agents": [
+    "AI Engineering & LLMs": [
         "Pydantic AI",
         "LangChain",
         "LangGraph",
         "RAG",
         "MCP",
         "Tool Calling",
+        "Multi-Agent Systems",
         "Prompt Engineering",
         "OpenAI",
         "Gemini",
-        "Multi-Agent Systems",
+        "Pinecone",
     ],
     "Voice AI": ["VAPI", "Retell", "Text-to-Speech", "Voice Cloning"],
-    Backend: [
-        "Python",
-        "FastAPI",
-        "Node.js",
-        "NestJS",
-        "TypeScript",
-        "REST APIs",
+    "Frontend Development": ["Next.js", "React", "TypeScript", "React Flow", "Tailwind CSS"],
+    "Backend Development": ["Python", "FastAPI", "Node.js", "NestJS", "REST APIs", "Microservices"],
+    "Databases & Infrastructure": ["PostgreSQL", "MongoDB", "Redis", "Docker", "GCP Cloud Run", "GitHub Actions"],
+    "Integrations & Automation": [
         "Webhooks",
-        "Microservices",
+        "Mews PMS",
+        "Microsoft Graph",
+        "Gmail",
+        "Amazon Seller API",
+        "Firecrawl",
+        "Logfire",
+        "PostHog",
     ],
-    Data: ["PostgreSQL", "MongoDB", "Redis", "Pinecone"],
-    "Infra & Observability": ["Docker", "GCP Cloud Run", "GitHub Actions", "Logfire", "PostHog"],
-    Frontend: ["Next.js", "React", "React Flow", "Tailwind CSS"],
-    Mobile: ["Swift", "SwiftUI", "UIKit", "AppKit", "Swift Concurrency"],
-    "Research & Security": [
-        "Static Analysis",
-        "Grey-Box Fuzzing",
-        "Solidity",
-        "Slither",
-        "Echidna",
-        "Foundry",
-    ],
+    "Native Apps": ["Swift", "SwiftUI", "UIKit", "AppKit", "Swift Concurrency"],
+    "Research & Security": ["Static Analysis", "Grey-Box Fuzzing", "Solidity", "Slither", "Echidna", "Foundry"],
 };
 
+// The three areas the About section leads with
+export const focusAreas = [
+    {
+        title: "AI agents & voice AI",
+        text: "Multi-channel agents, voice agents on VAPI and Retell, RAG pipelines and MCP tool calling, with confidence-based escalation to humans.",
+    },
+    {
+        title: "Full-stack products",
+        text: "FastAPI and NestJS services, Next.js and React dashboards, PostgreSQL, from a 4-week POC to production.",
+    },
+    {
+        title: "Integrations & automation",
+        text: "Hotel PMS, Gmail, Microsoft Graph and Amazon Seller API integrations, plus cost, latency and performance tracking.",
+    },
+];
 
 export const dreamDeskResults = [
     { value: "3 hotels", label: "live in production" },
@@ -252,4 +280,5 @@ export const contact = {
     linkedin: "https://www.linkedin.com/in/zainabyousaf/",
     github: "https://github.com/zainab-yousaf",
     cv: "/Zainab_Yousaf_Resume.pdf",
+    availability: "Open to remote roles: full-time, part-time or contract",
 };

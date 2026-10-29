@@ -40,7 +40,7 @@ export default function ContactForm() {
     };
 
     const input =
-        "w-full px-4 py-3 text-base text-fg placeholder:text-subtle bg-bg border border-line rounded-xl transition-colors focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/25";
+        "w-full px-4 py-3 text-base text-espresso placeholder:text-muted bg-ivory border border-line-strong rounded-xl transition-colors focus:outline-none focus-visible:outline-none focus:border-espresso focus:ring-2 focus:ring-amber/40";
     const sending = status.kind === "sending";
 
     return (
@@ -63,10 +63,10 @@ export default function ContactForm() {
             <button
                 type="submit"
                 disabled={sending}
-                className="w-full flex items-center justify-center gap-2 text-base font-semibold text-fg bg-accent px-5 py-3 rounded-xl transition-[box-shadow,transform] hover:-translate-y-px hover:shadow-[0_10px_24px_-12px_var(--color-accent)] disabled:opacity-60 disabled:hover:translate-y-0"
+                className="btn btn-primary w-full disabled:opacity-60"
             >
                 {sending ? (
-                    <span className="w-4 h-4 border-2 border-fg border-t-transparent rounded-full animate-spin" aria-hidden="true" />
+                    <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden="true" />
                 ) : (
                     <Send className="w-4 h-4" aria-hidden="true" />
                 )}

@@ -1,4 +1,4 @@
-import FirstScreen from "../components/FirstScreen";
+import Hero from "../components/Hero";
 import TopNav from "../components/TopNav";
 import {
     AboutSection,
@@ -16,8 +16,8 @@ export default function Home() {
     return (
         <MotionProvider>
             <TopNav />
-            <main>
-                <FirstScreen />
+            <main id="main">
+                <Hero />
                 <AboutSection />
                 {/* "Work" in the nav: the case study followed by the other projects */}
                 <div id="work">
