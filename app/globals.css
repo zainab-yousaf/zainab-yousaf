@@ -51,7 +51,8 @@ html {
 
 /* Anchored blocks land below the sticky nav when jumped to */
 section[id],
-div[id] {
+div[id],
+article[id] {
     scroll-margin-top: 72px;
 }
 

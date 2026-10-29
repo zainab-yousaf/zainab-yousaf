@@ -1,6 +1,13 @@
 import { ArrowRight } from "lucide-react";
-import DreamDeskDiagram from "./DreamDeskDiagram";
 import { contact } from "@/lib/content";
+
+// The four strongest projects. Each line is a fact from lib/content.ts.
+const SELECTED_WORK = [
+    { name: "DreamDesk AI", line: "Hotel AI agents across voice, WhatsApp, email and web chat", href: "#dreamdesk" },
+    { name: "AutoMato AI", line: "GenAI Amazon listings for 50+ companies", href: "#project-automato-ai" },
+    { name: "PDF Converter", line: "iOS and macOS app, rated 5.0 on the App Store", href: "#project-pdf-converter-ios-macos" },
+    { name: "Smart Contract Security", line: "Fuzzing research with DFKI Germany", href: "#project-smart-contract-security" },
+];
 
 // First screen: who I am and what I build on the left, one visual of my strongest project on the right.
 // Desktop fills the viewport below the 64px nav; smaller screens stack and scroll.
@@ -54,26 +61,35 @@ export default function Hero() {
                     </p>
                 </div>
 
-                {/* Visual: DreamDesk at a glance */}
-                <figure
-                    className="rise-in surface p-5 sm:p-7 w-full max-w-[640px] lg:justify-self-end"
+                {/* Selected work: a short index of the strongest projects, each linking to its details */}
+                <nav
+                    aria-label="Selected work"
+                    className="rise-in w-full max-w-[540px] lg:justify-self-end"
                     style={{ "--delay": "140ms" } as React.CSSProperties}
                 >
-                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 pb-4 sm:pb-5 border-b border-line">
-                        <p className="font-display text-2xl text-espresso leading-none whitespace-nowrap">DreamDesk AI</p>
-                        <p className="text-[13px] text-muted whitespace-nowrap">Founding engineer · 2026</p>
-                    </div>
-
-                    <DreamDeskDiagram className="py-6 sm:py-8" />
-
-                    <figcaption className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-4 sm:pt-5 border-t border-line">
-                        <span className="text-sm text-muted">Live across 3 hotels · ~1.6s voice response</span>
-                        <a href="#dreamdesk" className="link text-sm inline-flex items-center gap-1.5 whitespace-nowrap">
-                            Read the case study
-                            <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-                        </a>
-                    </figcaption>
-                </figure>
+                    <p className="eyebrow mb-5">Selected work</p>
+                    <ol className="border-b border-line">
+                        {SELECTED_WORK.map((w, i) => (
+                            <li key={w.name} className="border-t border-line">
+                                <a href={w.href} className="group grid grid-cols-[2.25rem_1fr_auto] items-baseline gap-x-3 py-5 sm:py-6">
+                                    <span className="text-[13px] font-medium tabular-nums text-muted">
+                                        {String(i + 1).padStart(2, "0")}
+                                    </span>
+                                    <span className="min-w-0">
+                                        <span className="block font-display text-[1.6rem] sm:text-[1.875rem] leading-tight text-espresso group-hover:text-terracotta-ink transition-colors">
+                                            {w.name}
+                                        </span>
+                                        <span className="block mt-1 text-[15px] text-muted leading-snug">{w.line}</span>
+                                    </span>
+                                    <ArrowRight
+                                        className="w-5 h-5 self-center text-taupe group-hover:text-terracotta-ink group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0 transition-[color,translate]"
+                                        aria-hidden="true"
+                                    />
+                                </a>
+                            </li>
+                        ))}
+                    </ol>
+                </nav>
             </div>
         </section>
     );

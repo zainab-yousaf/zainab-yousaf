@@ -285,10 +285,13 @@ function splitTitle(p: Project) {
     return { name, kind: kind ?? p.org };
 }
 
+// Anchor id for a project card, e.g. "project-automato-ai" (linked from the hero)
+const projectId = (name: string) => "project-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 function ProjectCard({ p }: { p: Project }) {
     const { name, kind } = splitTitle(p);
     return (
-        <article className="surface h-full p-7 sm:p-9 flex flex-col">
+        <article id={projectId(name)} className="surface h-full p-7 sm:p-9 flex flex-col">
             <p className="text-[13px] text-muted">
                 {kind} · {p.period}
             </p>
